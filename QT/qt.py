@@ -1,4 +1,5 @@
 import sys
+import sys
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtWidgets import QDialog, QApplication
 from PyQt5.QtGui import *
@@ -14,25 +15,6 @@ from multiprocessing import Process
 '''pyuic5  init.ui > mainUi.py'''
 
 
-class Timeout():
-    """Timeout class using ALARM signal."""
-
-    class Timeout(Exception):
-        pass
-
-    def __init__(self, sec):
-        self.sec = sec
-
-    def __enter__(self):
-        signal.signal(signal.SIGALRM, self.raise_timeout)
-        signal.alarm(self.sec)
-
-    def __exit__(self, *args):
-        signal.alarm(0)  # disable alarm
-
-    def raise_timeout(self, *args):
-        raise Timeout.Timeout()
-
 
 class AppWindow(QDialog):
     def __init__(self):
@@ -40,25 +22,16 @@ class AppWindow(QDialog):
         self.ui = Ui_Frame()
         self.ui.setupUi(self)
         self.show()
-        self.ui.pbNext.clicked.connect(self.getImageServer)
+        self.showMaximized()
+        self.ui.pushButton_2.clicked.connect(self.updateImg)
 
-    def getImageServer(self):
-        try:
-            with Timeout(sec=1):
-                input = cv2.VideoCapture("http://192.168.250.200:5000/video_feed")
-                input.set(6, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'))
-                ret, frame = input.read()
-                cv2.imwrite("frame.jpg", frame)
-                cv2.imwrite("frame_pro.jpg", cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY))
-                self.ui.lb_Ping.setText("OK")
-        except:
-            self.ui.lb_Ping.setText("No Response")
-            print("Can't connect to the server")
+
 
 
     def updateImg(self):
-        self.ui.lb_imgCam.setPixmap(QPixmap("frame.jpg"))
-
+        #self.ui.Img_label.setPixmap(QPixmap("pNewProd.bmp"))
+        self.ui.pushButton_5.setVisible(False)
+        '''
     def updateImgPro(self):
         self.ui.lb_img_pro.setPixmap(QPixmap("frame_pro.jpg"))
 
@@ -92,22 +65,23 @@ class AppWindow(QDialog):
         self.ui.lb_plc_start.setText(status)
         self.ui.lb_plc_group.setText(group)
 
-
+'''
 
 """Timer definition"""
 @t2.job(interval=timedelta(seconds=1))
 def updateQt(w):
+    #.updateImg()
     # Get and save frame
     #ret, frame = input.read()
     #cv2.imwrite("frame.jpg", frame)
     #cv2.imwrite("frame_pro.jpg", cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY))
 
-    w.updateImg()
+    '''w.updateImg()
     w.updateImgPro()
     w.updateMedidas(1.43, 2.23, 3.11)
     w.updateStatusPlc("G1", "Stop")
     w.updateMedidasPlc(111,112,113,121,122,123,131,132,133,141,142,143,151,152,153)
-
+    '''
 
 
 def loop_a():
@@ -128,7 +102,7 @@ def loop_b():
 """________Code Start_________"""
 if __name__=="__main__":
     Process(target=loop_a).start()
-    Process(target=loop_b).start()
+    #Process(target=loop_b).start()
 
 
 
