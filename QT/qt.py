@@ -9,6 +9,7 @@ import socket
 import  time
 from timeloop import Timeloop
 from datetime import timedelta
+from datetime import datetime
 import signal
 t2 = Timeloop()
 from multiprocessing import Process
@@ -21,16 +22,85 @@ class AppWindow(QDialog):
         super().__init__()
         self.ui = Ui_Frame()
         self.ui.setupUi(self)
+        self.initState()
         self.show()
         self.showMaximized()
-        self.ui.pushButton_2.clicked.connect(self.updateImg)
+        self.ui.buttonInOut.clicked.connect(self.toggleInOutFrame)
+        self.ui.buttonData.clicked.connect(self.toggleDataFrame)
+        self.ui.buttonManual.clicked.connect(self.toggleManual)
+
+    def initState(self):
+        self.ui.frameInOut.setVisible (False)
+        self.ui.frameCounter.setVisible (False)
+        self.ui.slider_X.setVisible (False)
+        self.ui.slider_Y.setVisible (False)
+        self.ui.buttonStep.setVisible (False)
+        self.ui.buttonZ.setVisible (False)
+        self.ui.buttonDrill.setVisible (False)
+
+    def toggleManual(self):
+        if self.ui.buttonManual.text() == "Manual":
+            self.ui.slider_X.setVisible(True)
+            self.ui.slider_Y.setVisible (True)
+            self.ui.buttonStep.setVisible (True)
+            self.ui.buttonZ.setVisible (True)
+            self.ui.buttonDrill.setVisible (True)
+            self.ui.buttonManual.setText ("Auto")
+        else:
+            self.ui.slider_X.setVisible (False)
+            self.ui.slider_Y.setVisible (False)
+            self.ui.buttonStep.setVisible (False)
+            self.ui.buttonZ.setVisible (False)
+            self.ui.buttonDrill.setVisible (False)
+            self.ui.buttonManual.setText ("Manual")
 
 
+
+
+
+    def toggleManual1(self):
+        self.ui.slider_Y.setVisible (True)  
+        if self.ui.slider_X.isVisible():
+        #if self.ui.buttonManual.text == "Manual":
+            self.ui.slider_X.setVisible (True)
+            self.ui.slider_Y.setVisible (True)
+            self.ui.buttonStep.setVisible (True)
+            self.ui.buttonZ.setVisible (True)
+            self.ui.buttonDrill.setVisible (True)
+            self.ui.buttonManual.setText ("Auto")
+        else:
+            self.ui.buttonManual.setText ("Manual")
+            self.ui.slider_X.setVisible (False)
+            self.ui.slider_Y.setVisible (False)
+            self.ui.buttonStep.setVisible (False)
+            self.ui.buttonZ.setVisible (False)
+            self.ui.buttonDrill.setVisible (False)
+
+    def toggleInOutFrame(self):
+        if self.ui.frameInOut.isVisible():
+            self.ui.frameInOut.setVisible (False)
+        else:
+            self.ui.frameInOut.setVisible (True)
+
+    def toggleDataFrame(self):
+        if self.ui.frameCounter.isVisible():
+            self.ui.frameCounter.setVisible (False)
+        else:
+            self.ui.frameCounter.setVisible (True)
+
+    def updateDateTime(self):
+        now = datetime.now()
+        date = now.strftime("%d of %B, %Y")
+        currentTime = now.strftime("%H:%M:%S")
+        self.ui.lb_Date.setText(date)
+        self.ui.lb_time.setText(currentTime)
 
 
     def updateImg(self):
         #self.ui.Img_label.setPixmap(QPixmap("pNewProd.bmp"))
-        self.ui.pushButton_5.setVisible(False)
+        #self.ui.pushButton_5.setVisible(False)
+
+
         '''
     def updateImgPro(self):
         self.ui.lb_img_pro.setPixmap(QPixmap("frame_pro.jpg"))
@@ -70,6 +140,7 @@ class AppWindow(QDialog):
 """Timer definition"""
 @t2.job(interval=timedelta(seconds=1))
 def updateQt(w):
+    w.updateDateTime()
     #.updateImg()
     # Get and save frame
     #ret, frame = input.read()
