@@ -37,6 +37,10 @@ class AppWindow(QDialog):
         self.ui.buttonStep.setVisible (False)
         self.ui.buttonZ.setVisible (False)
         self.ui.buttonDrill.setVisible (False)
+        self.ui.buttonTeach.setVisible (False)
+        self.ui.buttonNextDrill.setVisible (False)
+        self.ui.buttonEndTeach.setVisible (False)
+        self.ui.buttonCartesianEnable.setVisible (False)
 
     def toggleManual(self):
         if self.ui.buttonManual.text() == "Manual":
@@ -45,6 +49,10 @@ class AppWindow(QDialog):
             self.ui.buttonStep.setVisible (True)
             self.ui.buttonZ.setVisible (True)
             self.ui.buttonDrill.setVisible (True)
+            self.ui.buttonTeach.setVisible(True)
+            self.ui.buttonNextDrill.setVisible(True)
+            self.ui.buttonEndTeach.setVisible(True)
+            self.ui.buttonCartesianEnable.setVisible(True)
             self.ui.buttonManual.setText ("Auto")
         else:
             self.ui.slider_X.setVisible (False)
@@ -52,6 +60,10 @@ class AppWindow(QDialog):
             self.ui.buttonStep.setVisible (False)
             self.ui.buttonZ.setVisible (False)
             self.ui.buttonDrill.setVisible (False)
+            self.ui.buttonTeach.setVisible(False)
+            self.ui.buttonNextDrill.setVisible(False)
+            self.ui.buttonEndTeach.setVisible(False)
+            self.ui.buttonCartesianEnable.setVisible (False)
             self.ui.buttonManual.setText ("Manual")
 
 
