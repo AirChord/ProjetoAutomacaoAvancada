@@ -8,8 +8,8 @@ BEGIN
   Bar[0]:=0;
   Bar[1]:=59414;
   Bar[2]:=59415;
-  Bar[3]:=59416;
-  Bar[4]:=59412;
+  Bar[3]:=59412;
+  Bar[4]:=59416;
   Bar[5]:=0;
   Style:=0;
   ExStyle:=0;
@@ -53,17 +53,17 @@ BEGIN
   BarID:=59414;
   Pos:="1 5";
   Docking:=1;
-  MRUDockID:=59422;
-  MRUDockPos:="1 5 958 237";
+  MRUDockID:=0;
+  MRUDockPos:="1 5 1479 185";
   MRUFloatStyle:=4;
-  MRUFloatPos:="-905969664 0";
+  MRUFloatPos:="-2147483648 0";
   Style:=36756;
   ExStyle:=3889;
   PrevFloating:=0;
   MDIChild:=0;
-  PctWidth:="500000";
+  PctWidth:="966242";
   MRUFloat:="300 180";
-  MRUHorzDock:="957 232";
+  MRUHorzDock:="1478 180";
   MRUVertDock:="300 180";
   MRUDockingState:=0;
   DockingStyle:=61440;
@@ -75,19 +75,19 @@ BEGIN
  Bar[3]:=
  BEGIN
   BarID:=59412;
-  Pos:="964 5";
+  Pos:="1485 5";
   Docking:=1;
-  MRUDockID:=0;
-  MRUDockPos:="964 5 1920 237";
+  MRUDockID:=59422;
+  MRUDockPos:="1485 5 1536 185";
   MRUFloatStyle:=4;
-  MRUFloatPos:="-905969664 0";
+  MRUFloatPos:="-2147483648 0";
   Style:=36756;
   ExStyle:=3889;
   PrevFloating:=0;
   MDIChild:=0;
-  PctWidth:="500000";
+  PctWidth:="33757";
   MRUFloat:="300 180";
-  MRUHorzDock:="956 232";
+  MRUHorzDock:="51 180";
   MRUVertDock:="300 180";
   MRUDockingState:=0;
   DockingStyle:=61440;
@@ -103,16 +103,16 @@ BEGIN
   Pos:="1 5";
   Docking:=1;
   MRUDockID:=0;
-  MRUDockPos:="1 5 710 185";
+  MRUDockPos:="1 5 566 185";
   MRUFloatStyle:=4;
-  MRUFloatPos:="-905969664 0";
+  MRUFloatPos:="-2147483648 0";
   Style:=36756;
   ExStyle:=3889;
   PrevFloating:=0;
   MDIChild:=0;
-  PctWidth:="500000";
+  PctWidth:="2269279";
   MRUFloat:="300 180";
-  MRUHorzDock:="709 232";
+  MRUHorzDock:="3472 144";
   MRUVertDock:="300 180";
   MRUDockingState:=0;
   DockingStyle:=61440;
@@ -127,9 +127,9 @@ BEGIN
   Pos:="0 -2";
   Docking:=1;
   MRUDockID:=59420;
-  MRUDockPos:="0 -2 300 619";
+  MRUDockPos:="0 -2 258 455";
   MRUFloatStyle:=4;
-  MRUFloatPos:="-905969664 0";
+  MRUFloatPos:="-2147483648 0";
   Style:=8084;
   ExStyle:=3889;
   PrevFloating:=0;
@@ -137,7 +137,7 @@ BEGIN
   PctWidth:="1000000";
   MRUFloat:="300 180";
   MRUHorzDock:="300 180";
-  MRUVertDock:="300 621";
+  MRUVertDock:="258 457";
   MRUDockingState:=0;
   DockingStyle:=61440;
   TypeID:=0;
@@ -149,19 +149,19 @@ BEGIN
  BEGIN
   BarID:=59415;
   Visible:=0;
-  Pos:="0 0";
+  Pos:="1 5";
   Docking:=1;
   MRUDockID:=0;
-  MRUDockPos:="0 0 0 0";
+  MRUDockPos:="1 5 343 185";
   MRUFloatStyle:=4;
-  MRUFloatPos:="-905969664 0";
+  MRUFloatPos:="-2147483648 0";
   Style:=36756;
   ExStyle:=3889;
   PrevFloating:=0;
   MDIChild:=0;
-  PctWidth:="1000000";
+  PctWidth:="2094769";
   MRUFloat:="300 180";
-  MRUHorzDock:="300 232";
+  MRUHorzDock:="3205 180";
   MRUVertDock:="300 180";
   MRUDockingState:=0;
   DockingStyle:=61440;
@@ -171,7 +171,7 @@ BEGIN
   ResourceID:=0;
  END;
  Bars:=7;
- Screen:="1920 1080";
+ Screen:="1536 864";
 END;
 ProjectTree:=
 BEGIN
@@ -215,21 +215,6 @@ BEGIN
 END;
 Frame[2]:=
 BEGIN
- Norm:="0000 0000 1077 0325";
- Min:="-001 -001";
- Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.Main!Main";
- Type:=1;
- Views:=
- BEGIN
-  View[0]:=
-  BEGIN
-   Yscroll:=17;
-  END;
-  nViews:=1;
- END;
-END;
-Frame[3]:=
-BEGIN
  Norm:="0104 0104 1103 0538";
  Min:="-001 -001";
  Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.Iniciation!Iniciation";
@@ -243,7 +228,7 @@ BEGIN
   nViews:=1;
  END;
 END;
-Frame[4]:=
+Frame[3]:=
 BEGIN
  Norm:="0052 0052 1284 0377";
  Min:="-001 -001";
@@ -257,7 +242,7 @@ BEGIN
   nViews:=1;
  END;
 END;
-Frame[5]:=
+Frame[4]:=
 BEGIN
  Norm:="0026 0026 1258 0351";
  Min:="-001 -001";
@@ -272,7 +257,7 @@ BEGIN
   nViews:=1;
  END;
 END;
-Frame[6]:=
+Frame[5]:=
 BEGIN
  Norm:="0052 0052 1051 0486";
  Min:="-001 -001";
@@ -286,7 +271,7 @@ BEGIN
   nViews:=1;
  END;
 END;
-Frame[7]:=
+Frame[6]:=
 BEGIN
  Norm:="0078 0078 1077 0512";
  Min:="-001 -001";
@@ -300,18 +285,17 @@ BEGIN
   nViews:=1;
  END;
 END;
-Frame[8]:=
+Frame[7]:=
 BEGIN
  Norm:="0130 0130 1129 0564";
  Min:="-001 -001";
- Path:="C:\Users\jomrodrigues\Documents\GitHub\ProjetoAutomacaoAvancada\cxProgrammer\ProjAutoAvancada.cxp";
+ Path:="D:\IPCA\MEEC\Ano_2\AutomacaoAvancada\Projeto\Projeto\cxProgrammer\ProjAutoAvancada.cxp";
  Access:="PROJECT:!NewProject.Resources.NewResource1.Symbols";
  Type:=3;
  Views:=
  BEGIN
   View[0]:=
   BEGIN
-   Yscroll:=84;
    Mag:=1;
    Extra:=
    BEGIN
@@ -332,6 +316,21 @@ BEGIN
   nViews:=1;
  END;
 END;
+Frame[8]:=
+BEGIN
+ Norm:="0000 0000 1077 0325";
+ Min:="-001 -001";
+ Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.Main!Main";
+ Type:=1;
+ Views:=
+ BEGIN
+  View[0]:=
+  BEGIN
+   Yscroll:=17;
+  END;
+  nViews:=1;
+ END;
+END;
 Frame[9]:=
 BEGIN
  Max:=true;
@@ -343,6 +342,7 @@ BEGIN
  BEGIN
   View[0]:=
   BEGIN
+   Yscroll:=15;
   END;
   nViews:=1;
  END;
