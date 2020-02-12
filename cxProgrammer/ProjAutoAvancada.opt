@@ -54,16 +54,16 @@ BEGIN
   Pos:="1 5";
   Docking:=1;
   MRUDockID:=0;
-  MRUDockPos:="1 5 693 185";
+  MRUDockPos:="1 5 1491 185";
   MRUFloatStyle:=4;
   MRUFloatPos:="-2147483648 0";
   Style:=36756;
   ExStyle:=3889;
   PrevFloating:=0;
   MDIChild:=0;
-  PctWidth:="452804";
+  PctWidth:="974120";
   MRUFloat:="300 180";
-  MRUHorzDock:="692 180";
+  MRUHorzDock:="1490 180";
   MRUVertDock:="300 180";
   MRUDockingState:=0;
   DockingStyle:=61440;
@@ -75,19 +75,19 @@ BEGIN
  Bar[3]:=
  BEGIN
   BarID:=59412;
-  Pos:="699 5";
+  Pos:="1497 5";
   Docking:=1;
   MRUDockID:=59422;
-  MRUDockPos:="699 5 1536 185";
+  MRUDockPos:="1497 5 1536 185";
   MRUFloatStyle:=4;
   MRUFloatPos:="-2147483648 0";
   Style:=36756;
   ExStyle:=3889;
   PrevFloating:=0;
   MDIChild:=0;
-  PctWidth:="547195";
+  PctWidth:="25879";
   MRUFloat:="300 180";
-  MRUHorzDock:="837 180";
+  MRUHorzDock:="39 180";
   MRUVertDock:="300 180";
   MRUDockingState:=0;
   DockingStyle:=61440;
@@ -181,7 +181,7 @@ BEGIN
  Item[3]:=17;
  ItemCount:=4;
  Sumcheck:=60;
- Selected:=25;
+ Selected:=24;
 END;
 Frame[0]:=
 BEGIN
@@ -319,21 +319,6 @@ BEGIN
 END;
 Frame[8]:=
 BEGIN
- Norm:="0052 0052 1051 0486";
- Min:="-001 -001";
- Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.SerialCam!SerialCam";
- Type:=1;
- Views:=
- BEGIN
-  View[0]:=
-  BEGIN
-  END;
-  nViews:=1;
- END;
-END;
-Frame[9]:=
-BEGIN
- Max:=true;
  Norm:="0026 0026 1258 0351";
  Min:="-001 -001";
  Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.AutoMode!AutoMode";
@@ -342,7 +327,23 @@ BEGIN
  BEGIN
   View[0]:=
   BEGIN
-   Yscroll:=3;
+   Yscroll:=27;
+  END;
+  nViews:=1;
+ END;
+END;
+Frame[9]:=
+BEGIN
+ Max:=true;
+ Norm:="0052 0052 1051 0486";
+ Min:="-001 -001";
+ Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.SerialCam!SerialCam";
+ Type:=1;
+ Views:=
+ BEGIN
+  View[0]:=
+  BEGIN
+   Yscroll:=7;
   END;
   nViews:=1;
  END;

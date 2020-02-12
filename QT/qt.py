@@ -15,6 +15,77 @@ t2 = Timeloop()
 from multiprocessing import Process
 '''pyuic5  init.ui > mainUi.py'''
 
+'''Comunication'''
+UDP_IP = "192.168.250.1"
+UDP_PORT = 9600
+
+class com:
+    sock= None
+
+    def __init__(self):
+        try:
+            self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            print("UDP target IP:", UDP_IP)
+            print("UDP target port:", UDP_PORT)
+
+        except socket.error:
+            print('Failed to create socket')
+
+        #openSocket()
+
+    #def openSocket():
+
+
+    testmessage = b'\x80\x00\x01\x00\x01\x00\x00\x20\x00\x00\x05\x01'
+    # Write message on PLC
+    def writeMessage(self, memmory, message):
+        try:
+            # 010282006E000002AAAABBBB
+            # 8000010001000020001A010282006E000002AAAABBBB
+            header = b'\x80\x00\x01\x00\x01\x00\x00\x20\x00\x0A\x01\x02\x82\x00'
+
+            footer = b'\x00\x00\x01'#\x80\x00\x01\x00\x01\x00\x00\x20\x00\x00\x01\x02\x82\x00\x6e\x00\x00\x01'
+            print(memmory.to_bytes(2,'big'))
+            sendMessage = header + memmory.to_bytes(1,'big') + footer + message.to_bytes(2,'big')
+            print("Sendmessage")
+            print(sendMessage)
+            self.sock.sendto(sendMessage, (UDP_IP, UDP_PORT))
+        except self.sock.error:
+            print('Unable to send message')
+
+    # Read message on PLC
+    def readMessage(self,memory):
+        messageHeader = b'\x80\x00\x01\x00\x01\x00\x00\x20\x00\x0B\x01\x01\x82\x00'
+        messageFooter = b'\x00\x00\x01'
+        sendMessage = messageHeader + memory.to_bytes(1, 'big') + messageFooter
+
+        print ("sefC")
+        self.sock.sendto(sendMessage, (UDP_IP, UDP_PORT))
+
+    def decodeBytes(self,bts):
+        val = b'\x00' + bts[-2:]
+        # print(val)
+        # print(int.from_bytes(val, byteorder='big', signed=True))
+        #
+        return int.from_bytes(val, byteorder='big', signed=True)
+
+    def received(self):
+        defi = int(0)
+        data, addr = self.sock.recvfrom(1024)  # buffer size is 1024 bytes
+        print("received message:", data)
+        print(data[9:10])
+        if data[9:10] == b'\x0B' :  #preciso ver o codigo
+            #     # response from read
+            defi = self.decodeBytes(data)
+            print(defi)
+            return int(defi)
+        elif data[9:10] == b'\x0A':  # preciso ver o codigo
+            # response from write
+            return -1
+def test():
+    global com1
+    com1.readMessage(100)
+    com1.received()
 
 
 class AppWindow(QDialog):
@@ -28,6 +99,7 @@ class AppWindow(QDialog):
         self.ui.buttonInOut.clicked.connect(self.toggleInOutFrame)
         self.ui.buttonData.clicked.connect(self.toggleDataFrame)
         self.ui.buttonManual.clicked.connect(self.toggleManual)
+        self.ui.buttonTeach.clicked.connect(self.teachButtonClicked)
 
     def initState(self):
         self.ui.frameInOut.setVisible (False)
@@ -65,6 +137,12 @@ class AppWindow(QDialog):
             self.ui.buttonEndTeach.setVisible(False)
             self.ui.buttonCartesianEnable.setVisible (False)
             self.ui.buttonManual.setText ("Manual")
+
+    def teachButtonClicked(self):
+        self.ui.lb_X.setText("we")
+        com1.readMessage(100)
+        com1.received()
+        #self.ui.lb_X.setText (data)
 
 
 
@@ -169,6 +247,8 @@ def updateQt(w):
 
 def loop_a():
     app = QApplication(sys.argv)
+    global com1
+    com1=com()
     w = AppWindow()
     w.show()
     import sched, time
@@ -183,7 +263,9 @@ def loop_b():
 
 
 """________Code Start_________"""
+com1 = None
 if __name__=="__main__":
+
     Process(target=loop_a).start()
     #Process(target=loop_b).start()
 
