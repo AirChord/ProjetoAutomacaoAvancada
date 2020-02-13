@@ -54,16 +54,16 @@ BEGIN
   Pos:="1 5";
   Docking:=1;
   MRUDockID:=0;
-  MRUDockPos:="1 5 681 185";
+  MRUDockPos:="1 5 241 185";
   MRUFloatStyle:=4;
   MRUFloatPos:="-2147483648 0";
   Style:=36756;
   ExStyle:=3889;
   PrevFloating:=0;
   MDIChild:=0;
-  PctWidth:="444805";
+  PctWidth:="315943";
   MRUFloat:="300 180";
-  MRUHorzDock:="680 180";
+  MRUHorzDock:="240 180";
   MRUVertDock:="300 180";
   MRUDockingState:=0;
   DockingStyle:=61440;
@@ -75,19 +75,19 @@ BEGIN
  Bar[3]:=
  BEGIN
   BarID:=59412;
-  Pos:="687 5";
+  Pos:="247 5";
   Docking:=1;
   MRUDockID:=59422;
-  MRUDockPos:="687 5 1536 185";
+  MRUDockPos:="247 5 766 185";
   MRUFloatStyle:=4;
   MRUFloatPos:="-2147483648 0";
   Style:=36756;
   ExStyle:=3889;
   PrevFloating:=0;
   MDIChild:=0;
-  PctWidth:="555194";
+  PctWidth:="684056";
   MRUFloat:="300 180";
-  MRUHorzDock:="849 180";
+  MRUHorzDock:="519 180";
   MRUVertDock:="300 180";
   MRUDockingState:=0;
   DockingStyle:=61440;
@@ -127,7 +127,7 @@ BEGIN
   Pos:="0 -2";
   Docking:=1;
   MRUDockID:=59420;
-  MRUDockPos:="0 -2 258 455";
+  MRUDockPos:="0 -2 258 446";
   MRUFloatStyle:=4;
   MRUFloatPos:="-2147483648 0";
   Style:=8084;
@@ -137,7 +137,7 @@ BEGIN
   PctWidth:="1000000";
   MRUFloat:="300 180";
   MRUHorzDock:="300 180";
-  MRUVertDock:="258 457";
+  MRUVertDock:="258 448";
   MRUDockingState:=0;
   DockingStyle:=61440;
   TypeID:=0;
@@ -159,9 +159,9 @@ BEGIN
   ExStyle:=3889;
   PrevFloating:=0;
   MDIChild:=0;
-  PctWidth:="6000000";
+  PctWidth:="13684210";
   MRUFloat:="300 180";
-  MRUHorzDock:="9180 180";
+  MRUHorzDock:="10400 180";
   MRUVertDock:="300 180";
   MRUDockingState:=0;
   DockingStyle:=61440;
@@ -181,7 +181,7 @@ BEGIN
  Item[3]:=17;
  ItemCount:=4;
  Sumcheck:=60;
- Selected:=27;
+ Selected:=28;
 END;
 Frame[0]:=
 BEGIN
@@ -290,21 +290,6 @@ BEGIN
 END;
 Frame[6]:=
 BEGIN
- Norm:="0078 0078 1077 0512";
- Min:="-001 -001";
- Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.CartesianControl!CartesianControl";
- Type:=1;
- Views:=
- BEGIN
-  View[0]:=
-  BEGIN
-   Yscroll:=2;
-  END;
-  nViews:=1;
- END;
-END;
-Frame[7]:=
-BEGIN
  Norm:="0000 0000 1077 0325";
  Min:="-001 -001";
  Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.Main!Main";
@@ -318,7 +303,7 @@ BEGIN
   nViews:=1;
  END;
 END;
-Frame[8]:=
+Frame[7]:=
 BEGIN
  Norm:="0052 0052 1051 0486";
  Min:="-001 -001";
@@ -332,9 +317,8 @@ BEGIN
   nViews:=1;
  END;
 END;
-Frame[9]:=
+Frame[8]:=
 BEGIN
- Max:=true;
  Norm:="0078 0078 1220 0403";
  Min:="-001 -001";
  Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.Output!Output";
@@ -344,6 +328,22 @@ BEGIN
   View[0]:=
   BEGIN
    Yscroll:=17;
+  END;
+  nViews:=1;
+ END;
+END;
+Frame[9]:=
+BEGIN
+ Max:=true;
+ Norm:="0078 0078 1077 0512";
+ Min:="-001 -001";
+ Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.CartesianControl!CartesianControl";
+ Type:=1;
+ Views:=
+ BEGIN
+  View[0]:=
+  BEGIN
+   Yscroll:=2;
   END;
   nViews:=1;
  END;
@@ -361,7 +361,7 @@ BEGIN
   ColumnWidth[3]:=116;
   ColumnWidth[4]:=60;
   ColumnWidth[5]:=110;
-  NumWatches:=29;
+  NumWatches:=31;
   Watch[0]:=
   BEGIN
    PLC:="AutoAvanPLC";
@@ -587,6 +587,22 @@ BEGIN
    Type:=200;
   END;
   Watch[28]:=
+  BEGIN
+   PLC:="AutoAvanPLC";
+   Reference:="C_Next_X";
+   TypeKnown:=true;
+   Path:="PROJECT:!NewProject.Resources.NewResource1.Symbols";
+   Type:=200;
+  END;
+  Watch[29]:=
+  BEGIN
+   PLC:="AutoAvanPLC";
+   Reference:="C_Next_Y";
+   TypeKnown:=true;
+   Path:="PROJECT:!NewProject.Resources.NewResource1.Symbols";
+   Type:=200;
+  END;
+  Watch[30]:=
   BEGIN
   END;
  END;
