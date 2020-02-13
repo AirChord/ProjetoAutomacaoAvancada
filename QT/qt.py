@@ -4,14 +4,10 @@ from PyQt5 import QtCore, QtGui
 from PyQt5.QtWidgets import QDialog, QApplication
 from PyQt5.QtGui import *
 from mainUi import Ui_Frame
-import cv2
 import socket
-import  time
-from timeloop import Timeloop
-from datetime import timedelta
+import time
+import threading
 from datetime import datetime
-import signal
-t2 = Timeloop()
 from multiprocessing import Process
 '''pyuic5  init.ui > mainUi.py'''
 
@@ -31,18 +27,17 @@ class com:
         except socket.error:
             print('Failed to create socket')
 
-        #openSocket()
-
-    #def openSocket():
-
 
     testmessage = b'\x80\x00\x01\x00\x01\x00\x00\x20\x00\x00\x05\x01'
+
     # Write message on PLC
     def writeMessage(self, memmory, message):
         try:
             # 010282006E000002AAAABBBB
             # 8000010001000020001A010282006E000002AAAABBBB
             header = b'\x80\x00\x01\x00\x01\x00\x00\x20\x00\x0A\x01\x02\x82\x00'
+            header = b'\x80\x00\x01\x00\x01\x00\x00\x20\x00\x0A\x01\x02\x30\x00'
+                                                                #0102300ADD0A000101
 
             footer = b'\x00\x00\x01'#\x80\x00\x01\x00\x01\x00\x00\x20\x00\x00\x01\x02\x82\x00\x6e\x00\x00\x01'
             print(memmory.to_bytes(2,'big'))
@@ -53,10 +48,22 @@ class com:
         except self.sock.error:
             print('Unable to send message')
 
+
+
     # Read message on PLC
-    def readMessage(self,memory):
+    def readOneMemory(self,memory):
         messageHeader = b'\x80\x00\x01\x00\x01\x00\x00\x20\x00\x0B\x01\x01\x82\x00'
-        messageFooter = b'\x00\x00\x01'
+        messageFooter = b'\x00\x00'
+
+        sendMessage = messageHeader + memory.to_bytes(1, 'big')+ messageFooter
+
+        print ("sefC")
+        self.sock.sendto(sendMessage, (UDP_IP, UDP_PORT))
+
+    def readTwoMemory(self,memory):
+        messageHeader = b'\x80\x00\x01\x00\x01\x00\x00\x20\x00\x0B\x01\x01\x82\x00'
+        messageFooter = b'\x00\x00\x02'
+        nextMemory = memory + 1
         sendMessage = messageHeader + memory.to_bytes(1, 'big') + messageFooter
 
         print ("sefC")
@@ -69,7 +76,15 @@ class com:
         #
         return int.from_bytes(val, byteorder='big', signed=True)
 
-    def received(self):
+    def decodeTwoBytes(self,bts):
+        val = b'\x00' + bts[-1:]
+        val1 = b'\x00' + bts[-4:-2]
+        print(val)
+        # print(int.from_bytes(val, byteorder='big', signed=True))
+        #
+        return (int.from_bytes(val, byteorder='big', signed=True),int.from_bytes(val1, byteorder='big', signed=True))
+
+    def receivedOneMemory(self):
         defi = int(0)
         data, addr = self.sock.recvfrom(1024)  # buffer size is 1024 bytes
         print("received message:", data)
@@ -82,6 +97,24 @@ class com:
         elif data[9:10] == b'\x0A':  # preciso ver o codigo
             # response from write
             return -1
+
+    def receivedTwoMemory(self):
+        defi = int(0)
+        data, addr = self.sock.recvfrom(1024)  # buffer size is 1024 bytes
+        print("received message:", data)
+        print(data[9:10])
+        if data[9:10] == b'\x0B':  # preciso ver o codigo
+             #     # response from read
+            defi = self.decodeTwoBytes(data)
+
+            #print(defi)
+            return defi
+        elif data[9:10] == b'\x0A':  # preciso ver o codigo
+            # response from write
+            return -1
+
+
+
 def test():
     global com1
     com1.readMessage(100)
@@ -140,8 +173,9 @@ class AppWindow(QDialog):
 
     def teachButtonClicked(self):
         self.ui.lb_X.setText("we")
-        com1.readMessage(100)
-        com1.received()
+        #com1.readOneMemory(100)
+        #com1.receivedOneMemory()
+
         #self.ui.lb_X.setText (data)
 
 
@@ -186,64 +220,48 @@ class AppWindow(QDialog):
         self.ui.lb_time.setText(currentTime)
 
 
-    def updateImg(self):
-        #self.ui.Img_label.setPixmap(QPixmap("pNewProd.bmp"))
-        #self.ui.pushButton_5.setVisible(False)
+    def updateState(self):
+        '''Read State from PLC'''
+        com1.readOneMemory(18)
+        numberState = com1.receivedOneMemory()
+        switcher= {
+            0:'NA',
+            1:'Initializing',
+            2:'Waiting',
+            3:'Automatic',
+            4:'Manual'
 
+        }
+        self.ui.lb_state.setText (switcher.get(numberState, "Invalid"))
 
-        '''
-    def updateImgPro(self):
-        self.ui.lb_img_pro.setPixmap(QPixmap("frame_pro.jpg"))
+    def updateProgram(self):
+        com1.readOneMemory()
+        numberProgram = com1.receivedOneMemory()
+        self.ui.lb_program.setText (str(numberProgram))
 
-    def updateMedidas(self, m1, m2, m3):
-        self.ui.lb_m1.setText(str(m1) + " mm")
-        self.ui.lb_m2.setText(str(m2) + " mm")
-        self.ui.lb_m3.setText(str(m3) + " mm")
+    def updatePositions(self):
+        com1.readTwoMemory(14)
+        position = com1.receivedTwoMemory()
+        self.ui.lb_X.setText(str(position[0]))
+        self.ui.lb_Y.setText(str(position[1]))
 
-    def updateMedidasPlc(self, m1_G1, m2_G1, m3_G1,
-                                    m1_G2, m2_G2, m3_G2,
-                                    m1_G3, m2_G3, m3_G3,
-                                    m1_G4, m2_G4, m3_G4,
-                                    m1_G5, m2_G5, m3_G5):
-        self.ui.lb_m1_G1.setText(str(m1_G1 / 100) + " mm")
-        self.ui.lb_m2_G1.setText(str(m2_G1 / 100) + " mm")
-        self.ui.lb_m3_G1.setText(str(m3_G1 / 100) + " mm")
-        self.ui.lb_m1_G2.setText(str(m1_G2 / 100) + " mm")
-        self.ui.lb_m2_G2.setText(str(m2_G2 / 100) + " mm")
-        self.ui.lb_m3_G2.setText(str(m3_G2 / 100) + " mm")
-        self.ui.lb_m1_G3.setText(str(m1_G3 / 100) + " mm")
-        self.ui.lb_m2_G3.setText(str(m2_G3 / 100) + " mm")
-        self.ui.lb_m3_G3.setText(str(m3_G3 / 100) + " mm")
-        self.ui.lb_m1_G4.setText(str(m1_G4 / 100) + " mm")
-        self.ui.lb_m2_G4.setText(str(m2_G4 / 100) + " mm")
-        self.ui.lb_m3_G4.setText(str(m3_G4 / 100) + " mm")
-        self.ui.lb_m1_G5.setText(str(m1_G5 / 100) + " mm")
-        self.ui.lb_m2_G5.setText(str(m2_G5 / 100) + " mm")
-        self.ui.lb_m3_G5.setText(str(m3_G5 / 100) + " mm")
-
-    def updateStatusPlc(self, group, status):
-        self.ui.lb_plc_start.setText(status)
-        self.ui.lb_plc_group.setText(group)
-
-'''
-
-"""Timer definition"""
-@t2.job(interval=timedelta(seconds=1))
-def updateQt(w):
+"""Thread definition"""
+def updateQt(i,w):
     w.updateDateTime()
-    #.updateImg()
-    # Get and save frame
-    #ret, frame = input.read()
-    #cv2.imwrite("frame.jpg", frame)
-    #cv2.imwrite("frame_pro.jpg", cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY))
+    #w.updateState()
+    #w.updatePositions()
+    global t
+    t = threading.Timer(1.0, updateQt, args=(i,w,))
+    t.start()
 
-    '''w.updateImg()
-    w.updateImgPro()
-    w.updateMedidas(1.43, 2.23, 3.11)
-    w.updateStatusPlc("G1", "Stop")
-    w.updateMedidasPlc(111,112,113,121,122,123,131,132,133,141,142,143,151,152,153)
-    '''
 
+
+
+def testThread():
+    print("hello. Timer")
+    global t
+    t = threading.Timer(1.0, testThread)
+    t.start()
 
 def loop_a():
     app = QApplication(sys.argv)
@@ -251,23 +269,16 @@ def loop_a():
     com1=com()
     w = AppWindow()
     w.show()
-    import sched, time
-    s = sched.scheduler(time.time, time.sleep)
-    #t2.start(block=True)
-    updateQt(w)
+    updateQt(1,w)
     sys.exit(app.exec_())
-
-def loop_b():
-    while True:
-        a =1#Image process
 
 
 """________Code Start_________"""
 com1 = None
+t=None
 if __name__=="__main__":
 
     Process(target=loop_a).start()
-    #Process(target=loop_b).start()
 
 
 

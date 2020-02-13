@@ -209,15 +209,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
       <rect>
        <x>60</x>
        <y>100</y>
-       <width>311</width>
-       <height>311</height>
+       <width>310</width>
+       <height>310</height>
       </rect>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>311</width>
-       <height>251</height>
-      </size>
      </property>
      <property name="cursor">
       <cursorShape>CrossCursor</cursorShape>
@@ -273,7 +267,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="main_lb_program">
+    <widget class="QLabel" name="lb_programFixed">
      <property name="geometry">
       <rect>
        <x>40</x>
@@ -321,7 +315,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="main_lb_program_2">
+    <widget class="QLabel" name="lb_program">
      <property name="geometry">
       <rect>
        <x>160</x>
@@ -368,10 +362,10 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
     <zorder>Img_label</zorder>
     <zorder>main_circle</zorder>
     <zorder>main_cross</zorder>
-    <zorder>main_lb_program</zorder>
+    <zorder>lb_programFixed</zorder>
     <zorder>slider_X</zorder>
     <zorder>slider_Y</zorder>
-    <zorder>main_lb_program_2</zorder>
+    <zorder>lb_program</zorder>
     <zorder>buttonCartesianEnable</zorder>
    </widget>
    <widget class="QFrame" name="frame_2">
@@ -392,7 +386,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="main_lb_state">
+    <widget class="QLabel" name="lb_stateFixed">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -550,7 +544,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
       </property>
      </widget>
     </widget>
-    <widget class="QLabel" name="main_lb_program_3">
+    <widget class="QLabel" name="lb_state">
      <property name="geometry">
       <rect>
        <x>100</x>
@@ -560,7 +554,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
       </rect>
      </property>
      <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Waiting&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;NA&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
     <widget class="QLabel" name="lb_X">
@@ -576,7 +570,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_14">
+    <widget class="QLabel" name="lb_Y">
      <property name="geometry">
       <rect>
        <x>70</x>
@@ -1904,7 +1898,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLabel" name="label_46">
+     <widget class="QLabel" name="lb_Counter1">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -1968,7 +1962,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLabel" name="label_50">
+     <widget class="QLabel" name="lb_Counter2">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -2032,7 +2026,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLabel" name="label_52">
+     <widget class="QLabel" name="lb_Counter3">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -2096,7 +2090,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLabel" name="label_56">
+     <widget class="QLabel" name="lb_Counter4">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -2160,7 +2154,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLabel" name="label_66">
+     <widget class="QLabel" name="lb_Counter7">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -2224,7 +2218,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLabel" name="label_68">
+     <widget class="QLabel" name="lb_Counter8">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -2288,7 +2282,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLabel" name="label_70">
+     <widget class="QLabel" name="lb_Counter5">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -2352,7 +2346,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLabel" name="label_72">
+     <widget class="QLabel" name="lb_Counter6">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -2416,7 +2410,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLabel" name="label_90">
+     <widget class="QLabel" name="lb_Counter9">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -2480,7 +2474,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <widget class="QLabel" name="label_92">
+     <widget class="QLabel" name="lb_Counter10">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -2542,7 +2536,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="buttonCounterClose_2">
+   <widget class="QPushButton" name="buttonReport">
     <property name="geometry">
      <rect>
       <x>600</x>
@@ -2643,7 +2637,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Machine Stopped&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="buttonCounterClose_3">
+   <widget class="QPushButton" name="buttonWarningClose_3">
     <property name="geometry">
      <rect>
       <x>380</x>
