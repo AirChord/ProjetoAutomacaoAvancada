@@ -15,6 +15,8 @@ from multiprocessing import Process
 UDP_IP = "192.168.250.1"
 UDP_PORT = 9600
 
+
+''' COmunication class '''
 class com:
     sock= None
 
@@ -36,8 +38,6 @@ class com:
             # 010282006E000002AAAABBBB
             # 8000010001000020001A010282006E000002AAAABBBB
             header = b'\x80\x00\x01\x00\x01\x00\x00\x20\x00\x0A\x01\x02\x82\x00'
-            header = b'\x80\x00\x01\x00\x01\x00\x00\x20\x00\x0A\x01\x02\x30\x00'
-                                                                #0102300ADD0A000101
 
             footer = b'\x00\x00\x01'#\x80\x00\x01\x00\x01\x00\x00\x20\x00\x00\x01\x02\x82\x00\x6e\x00\x00\x01'
             print(memmory.to_bytes(2,'big'))
@@ -45,15 +45,29 @@ class com:
             print("Sendmessage")
             print(sendMessage)
             self.sock.sendto(sendMessage, (UDP_IP, UDP_PORT))
+            self.receivedOneMemory()
         except self.sock.error:
             print('Unable to send message')
 
+    def writeBit(self,memmory, bit, state):
+        self.readOneMemory(memmory)
+        data = self.receivedOneMemory()
+        print("fefefe")
+        print (data)
+
+        masc= 1
+        masc = masc << bit
+        if (state == True):
+            sendData = data | masc
+        else:
+            sendData = data & (~masc)
+        self.writeMessage(memmory,sendData)
 
 
     # Read message on PLC
     def readOneMemory(self,memory):
         messageHeader = b'\x80\x00\x01\x00\x01\x00\x00\x20\x00\x0B\x01\x01\x82\x00'
-        messageFooter = b'\x00\x00'
+        messageFooter = b'\x00\x00\x01'
 
         sendMessage = messageHeader + memory.to_bytes(1, 'big')+ messageFooter
 
@@ -69,20 +83,51 @@ class com:
         print ("sefC")
         self.sock.sendto(sendMessage, (UDP_IP, UDP_PORT))
 
+    def readCounterMemory(self,memory):
+        messageHeader = b'\x80\x00\x01\x00\x01\x00\x00\x20\x00\x0B\x01\x01\x82\x00'
+        messageFooter = b'\x00\x00\x0A'
+        nextMemory = memory + 1
+        sendMessage = messageHeader + memory.to_bytes(1, 'big') + messageFooter
+
+        print ("sefC")
+        self.sock.sendto(sendMessage, (UDP_IP, UDP_PORT))
+
     def decodeBytes(self,bts):
         val = b'\x00' + bts[-2:]
-        # print(val)
+        print("decoding")
+        print(val)
         # print(int.from_bytes(val, byteorder='big', signed=True))
         #
         return int.from_bytes(val, byteorder='big', signed=True)
 
     def decodeTwoBytes(self,bts):
-        val = b'\x00' + bts[-1:]
+        val = b'\x00' + bts[-2:]
         val1 = b'\x00' + bts[-4:-2]
         print(val)
         # print(int.from_bytes(val, byteorder='big', signed=True))
         #
-        return (int.from_bytes(val, byteorder='big', signed=True),int.from_bytes(val1, byteorder='big', signed=True))
+        return (int.from_bytes(val1, byteorder='big', signed=True),int.from_bytes(val, byteorder='big', signed=True))
+
+    def decodeTenBytes(self,bts):
+        val = [b'\x00' + bts[-2:],
+        b'\x00' + bts[-4:-2],
+        b'\x00' + bts[-6:-4],
+        b'\x00' + bts[-8:-6],
+        b'\x00' + bts[-10:-8],
+        b'\x00' + bts[-12:-10],
+        b'\x00' + bts[-14:-12],
+        b'\x00' + bts[-16:-14],
+        b'\x00' + bts[-18:-16],
+        b'\x00' + bts[-20:-18]
+        ]
+        #print(val)
+        # print(int.from_bytes(val, byteorder='big', signed=True))
+        #
+        values = list()
+        for i in reversed(range(10)):
+            values.append(int.from_bytes(val[i], byteorder='big'))
+        return values
+
 
     def receivedOneMemory(self):
         defi = int(0)
@@ -114,6 +159,22 @@ class com:
             return -1
 
 
+    def receivedCounterMemory(self):
+        defi = int(0)
+        data, addr = self.sock.recvfrom(1024)  # buffer size is 1024 bytes
+        print("received message:", data)
+        print(data[9:10])
+        if data[9:10] == b'\x0B':  # preciso ver o codigo
+             #     # response from read
+            defi = self.decodeTenBytes(data)
+
+            #print(defi)
+            return defi
+        elif data[9:10] == b'\x0A':  # preciso ver o codigo
+            # response from write
+            return -1
+
+
 
 def test():
     global com1
@@ -121,6 +182,7 @@ def test():
     com1.received()
 
 
+'''GUI class'''
 class AppWindow(QDialog):
     def __init__(self):
         super().__init__()
@@ -133,6 +195,7 @@ class AppWindow(QDialog):
         self.ui.buttonData.clicked.connect(self.toggleDataFrame)
         self.ui.buttonManual.clicked.connect(self.toggleManual)
         self.ui.buttonTeach.clicked.connect(self.teachButtonClicked)
+        self.ui.buttonNextDrill.clicked.connect(self.NextDrillButtonClicked)
 
     def initState(self):
         self.ui.frameInOut.setVisible (False)
@@ -177,10 +240,13 @@ class AppWindow(QDialog):
         #com1.receivedOneMemory()
 
         #self.ui.lb_X.setText (data)
+        #com1.writeMessage(51, 1279)
+        com1.writeBit(51, 0, False)
 
-
-
-
+    def NextDrillButtonClicked(self):
+        print("NewCLick")
+        com1.writeBit(51, 0, True)
+        #com1.writeMessage(51, 1278)
 
     def toggleManual1(self):
         self.ui.slider_Y.setVisible (True)  
@@ -240,16 +306,40 @@ class AppWindow(QDialog):
         self.ui.lb_program.setText (str(numberProgram))
 
     def updatePositions(self):
-        com1.readTwoMemory(14)
+        com1.readTwoMemory(10)
         position = com1.receivedTwoMemory()
         self.ui.lb_X.setText(str(position[0]))
         self.ui.lb_Y.setText(str(position[1]))
+        '''Adjust coordinates to image'''
+        px=position[0]*310/1000
+        py=position[1]*310/1000
+        self.ui.main_cross.move(px+40,py+80)
+
+    def updateCounters(self):
+        com1.readCounterMemory(51)
+        counters = com1.receivedCounterMemory()
+        self.ui.lb_Counter1.setText(str(counters[0]))
+        self.ui.lb_Counter2.setText(str(counters[1]))
+        self.ui.lb_Counter3.setText(str(counters[2]))
+        self.ui.lb_Counter4.setText(str(counters[3]))
+        self.ui.lb_Counter5.setText(str(counters[4]))
+        self.ui.lb_Counter6.setText(str(counters[5]))
+        self.ui.lb_Counter7.setText(str(counters[6]))
+        self.ui.lb_Counter8.setText(str(counters[7]))
+        self.ui.lb_Counter9.setText(str(counters[8]))
+        self.ui.lb_Counter10.setText(str(counters[9]))
+
 
 """Thread definition"""
 def updateQt(i,w):
     w.updateDateTime()
     #w.updateState()
     #w.updatePositions()
+    #w.updateCounters()
+
+
+
+
     global t
     t = threading.Timer(1.0, updateQt, args=(i,w,))
     t.start()
@@ -266,7 +356,7 @@ def testThread():
 def loop_a():
     app = QApplication(sys.argv)
     global com1
-    com1=com()
+    com1 = com()
     w = AppWindow()
     w.show()
     updateQt(1,w)

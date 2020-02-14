@@ -51,19 +51,20 @@ BEGIN
  Bar[2]:=
  BEGIN
   BarID:=59414;
+  Visible:=0;
   Pos:="1 5";
   Docking:=1;
   MRUDockID:=0;
-  MRUDockPos:="1 5 241 185";
+  MRUDockPos:="1 5 432 185";
   MRUFloatStyle:=4;
   MRUFloatPos:="-2147483648 0";
   Style:=36756;
   ExStyle:=3889;
   PrevFloating:=0;
   MDIChild:=0;
-  PctWidth:="315943";
+  PctWidth:="282071";
   MRUFloat:="300 180";
-  MRUHorzDock:="240 180";
+  MRUHorzDock:="431 180";
   MRUVertDock:="300 180";
   MRUDockingState:=0;
   DockingStyle:=61440;
@@ -75,19 +76,19 @@ BEGIN
  Bar[3]:=
  BEGIN
   BarID:=59412;
-  Pos:="247 5";
+  Pos:="1 5";
   Docking:=1;
   MRUDockID:=59422;
-  MRUDockPos:="247 5 766 185";
+  MRUDockPos:="1 5 766 185";
   MRUFloatStyle:=4;
   MRUFloatPos:="-2147483648 0";
   Style:=36756;
   ExStyle:=3889;
   PrevFloating:=0;
   MDIChild:=0;
-  PctWidth:="684056";
+  PctWidth:="1000000";
   MRUFloat:="300 180";
-  MRUHorzDock:="519 180";
+  MRUHorzDock:="765 180";
   MRUVertDock:="300 180";
   MRUDockingState:=0;
   DockingStyle:=61440;
@@ -159,9 +160,9 @@ BEGIN
   ExStyle:=3889;
   PrevFloating:=0;
   MDIChild:=0;
-  PctWidth:="13684210";
+  PctWidth:="15092104";
   MRUFloat:="300 180";
-  MRUHorzDock:="10400 180";
+  MRUHorzDock:="11470 180";
   MRUVertDock:="300 180";
   MRUDockingState:=0;
   DockingStyle:=61440;
@@ -209,6 +210,7 @@ BEGIN
  BEGIN
   View[0]:=
   BEGIN
+   Yscroll:=1;
    Mag:=1;
    Extra:=
    BEGIN
@@ -260,21 +262,6 @@ BEGIN
 END;
 Frame[4]:=
 BEGIN
- Norm:="0026 0026 1258 0351";
- Min:="-001 -001";
- Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.AutoMode!AutoMode";
- Type:=1;
- Views:=
- BEGIN
-  View[0]:=
-  BEGIN
-   Yscroll:=27;
-  END;
-  nViews:=1;
- END;
-END;
-Frame[5]:=
-BEGIN
  Norm:="0104 0104 1246 0429";
  Min:="-001 -001";
  Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.EthernetInterface!EthernetInterface";
@@ -288,7 +275,7 @@ BEGIN
   nViews:=1;
  END;
 END;
-Frame[6]:=
+Frame[5]:=
 BEGIN
  Norm:="0000 0000 1077 0325";
  Min:="-001 -001";
@@ -303,21 +290,7 @@ BEGIN
   nViews:=1;
  END;
 END;
-Frame[7]:=
-BEGIN
- Norm:="0052 0052 1051 0486";
- Min:="-001 -001";
- Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.SerialCam!SerialCam";
- Type:=1;
- Views:=
- BEGIN
-  View[0]:=
-  BEGIN
-  END;
-  nViews:=1;
- END;
-END;
-Frame[8]:=
+Frame[6]:=
 BEGIN
  Norm:="0078 0078 1220 0403";
  Min:="-001 -001";
@@ -328,6 +301,37 @@ BEGIN
   View[0]:=
   BEGIN
    Yscroll:=17;
+  END;
+  nViews:=1;
+ END;
+END;
+Frame[7]:=
+BEGIN
+ Norm:="0026 0026 1258 0351";
+ Min:="-001 -001";
+ Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.AutoMode!AutoMode";
+ Type:=1;
+ Views:=
+ BEGIN
+  View[0]:=
+  BEGIN
+   Xscroll:=3;
+   Yscroll:=66;
+  END;
+  nViews:=1;
+ END;
+END;
+Frame[8]:=
+BEGIN
+ Norm:="0052 0052 1051 0486";
+ Min:="-001 -001";
+ Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.SerialCam!SerialCam";
+ Type:=1;
+ Views:=
+ BEGIN
+  View[0]:=
+  BEGIN
+   Yscroll:=12;
   END;
   nViews:=1;
  END;
@@ -361,7 +365,7 @@ BEGIN
   ColumnWidth[3]:=116;
   ColumnWidth[4]:=60;
   ColumnWidth[5]:=110;
-  NumWatches:=31;
+  NumWatches:=41;
   Watch[0]:=
   BEGIN
    PLC:="AutoAvanPLC";
@@ -603,6 +607,86 @@ BEGIN
    Type:=200;
   END;
   Watch[30]:=
+  BEGIN
+   PLC:="AutoAvanPLC";
+   Reference:="D51";
+   TypeKnown:=true;
+   Path:="PROJECT:!NewProject.Resources.NewResource1.Symbols";
+   Type:=200;
+  END;
+  Watch[31]:=
+  BEGIN
+   PLC:="AutoAvanPLC";
+   Reference:="D52";
+   TypeKnown:=true;
+   Path:="PROJECT:!NewProject.Resources.NewResource1.Symbols";
+   Type:=200;
+  END;
+  Watch[32]:=
+  BEGIN
+   PLC:="AutoAvanPLC";
+   Reference:="D53";
+   TypeKnown:=true;
+   Path:="PROJECT:!NewProject.Resources.NewResource1.Symbols";
+   Type:=200;
+  END;
+  Watch[33]:=
+  BEGIN
+   PLC:="AutoAvanPLC";
+   Reference:="D54";
+   TypeKnown:=true;
+   Path:="PROJECT:!NewProject.Resources.NewResource1.Symbols";
+   Type:=200;
+  END;
+  Watch[34]:=
+  BEGIN
+   PLC:="AutoAvanPLC";
+   Reference:="D55";
+   TypeKnown:=true;
+   Path:="PROJECT:!NewProject.Resources.NewResource1.Symbols";
+   Type:=200;
+  END;
+  Watch[35]:=
+  BEGIN
+   PLC:="AutoAvanPLC";
+   Reference:="D56";
+   TypeKnown:=true;
+   Path:="PROJECT:!NewProject.Resources.NewResource1.Symbols";
+   Type:=200;
+  END;
+  Watch[36]:=
+  BEGIN
+   PLC:="AutoAvanPLC";
+   Reference:="D57";
+   TypeKnown:=true;
+   Path:="PROJECT:!NewProject.Resources.NewResource1.Symbols";
+   Type:=200;
+  END;
+  Watch[37]:=
+  BEGIN
+   PLC:="AutoAvanPLC";
+   Reference:="D58";
+   TypeKnown:=true;
+   Path:="PROJECT:!NewProject.Resources.NewResource1.Symbols";
+   Type:=200;
+  END;
+  Watch[38]:=
+  BEGIN
+   PLC:="AutoAvanPLC";
+   Reference:="D59";
+   TypeKnown:=true;
+   Path:="PROJECT:!NewProject.Resources.NewResource1.Symbols";
+   Type:=200;
+  END;
+  Watch[39]:=
+  BEGIN
+   PLC:="AutoAvanPLC";
+   Reference:="D60";
+   TypeKnown:=true;
+   Path:="PROJECT:!NewProject.Resources.NewResource1.Symbols";
+   Type:=200;
+  END;
+  Watch[40]:=
   BEGIN
   END;
  END;
