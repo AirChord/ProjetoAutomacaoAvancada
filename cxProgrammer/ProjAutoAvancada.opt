@@ -62,9 +62,9 @@ BEGIN
   ExStyle:=3889;
   PrevFloating:=0;
   MDIChild:=0;
-  PctWidth:="282071";
+  PctWidth:="282070";
   MRUFloat:="300 180";
-  MRUHorzDock:="431 180";
+  MRUHorzDock:="431 0";
   MRUVertDock:="300 180";
   MRUDockingState:=0;
   DockingStyle:=61440;
@@ -79,7 +79,7 @@ BEGIN
   Pos:="1 5";
   Docking:=1;
   MRUDockID:=59422;
-  MRUDockPos:="1 5 766 185";
+  MRUDockPos:="1 5 0 185";
   MRUFloatStyle:=4;
   MRUFloatPos:="-2147483648 0";
   Style:=36756;
@@ -88,7 +88,7 @@ BEGIN
   MDIChild:=0;
   PctWidth:="1000000";
   MRUFloat:="300 180";
-  MRUHorzDock:="765 180";
+  MRUHorzDock:="-1 0";
   MRUVertDock:="300 180";
   MRUDockingState:=0;
   DockingStyle:=61440;
@@ -113,7 +113,7 @@ BEGIN
   MDIChild:=0;
   PctWidth:="2269279";
   MRUFloat:="300 180";
-  MRUHorzDock:="3472 144";
+  MRUHorzDock:="3472 0";
   MRUVertDock:="300 180";
   MRUDockingState:=0;
   DockingStyle:=61440;
@@ -128,7 +128,7 @@ BEGIN
   Pos:="0 -2";
   Docking:=1;
   MRUDockID:=59420;
-  MRUDockPos:="0 -2 258 446";
+  MRUDockPos:="0 -2 258 0";
   MRUFloatStyle:=4;
   MRUFloatPos:="-2147483648 0";
   Style:=8084;
@@ -137,8 +137,8 @@ BEGIN
   MDIChild:=0;
   PctWidth:="1000000";
   MRUFloat:="300 180";
-  MRUHorzDock:="300 180";
-  MRUVertDock:="258 448";
+  MRUHorzDock:="300 0";
+  MRUVertDock:="258 2";
   MRUDockingState:=0;
   DockingStyle:=61440;
   TypeID:=0;
@@ -160,9 +160,9 @@ BEGIN
   ExStyle:=3889;
   PrevFloating:=0;
   MDIChild:=0;
-  PctWidth:="15092104";
+  PctWidth:="15092103";
   MRUFloat:="300 180";
-  MRUHorzDock:="11470 180";
+  MRUHorzDock:="11470 0";
   MRUVertDock:="300 180";
   MRUDockingState:=0;
   DockingStyle:=61440;
@@ -182,7 +182,7 @@ BEGIN
  Item[3]:=17;
  ItemCount:=4;
  Sumcheck:=60;
- Selected:=28;
+ Selected:=29;
 END;
 Frame[0]:=
 BEGIN
@@ -248,35 +248,6 @@ BEGIN
 END;
 Frame[3]:=
 BEGIN
- Norm:="0052 0052 1284 0377";
- Min:="-001 -001";
- Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.ManualMode!ManualMode";
- Type:=1;
- Views:=
- BEGIN
-  View[0]:=
-  BEGIN
-  END;
-  nViews:=1;
- END;
-END;
-Frame[4]:=
-BEGIN
- Norm:="0104 0104 1246 0429";
- Min:="-001 -001";
- Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.EthernetInterface!EthernetInterface";
- Type:=1;
- Views:=
- BEGIN
-  View[0]:=
-  BEGIN
-   Yscroll:=18;
-  END;
-  nViews:=1;
- END;
-END;
-Frame[5]:=
-BEGIN
  Norm:="0000 0000 1077 0325";
  Min:="-001 -001";
  Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.Main!Main";
@@ -290,7 +261,7 @@ BEGIN
   nViews:=1;
  END;
 END;
-Frame[6]:=
+Frame[4]:=
 BEGIN
  Norm:="0078 0078 1220 0403";
  Min:="-001 -001";
@@ -305,23 +276,7 @@ BEGIN
   nViews:=1;
  END;
 END;
-Frame[7]:=
-BEGIN
- Norm:="0026 0026 1258 0351";
- Min:="-001 -001";
- Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.AutoMode!AutoMode";
- Type:=1;
- Views:=
- BEGIN
-  View[0]:=
-  BEGIN
-   Xscroll:=3;
-   Yscroll:=66;
-  END;
-  nViews:=1;
- END;
-END;
-Frame[8]:=
+Frame[5]:=
 BEGIN
  Norm:="0052 0052 1051 0486";
  Min:="-001 -001";
@@ -336,9 +291,8 @@ BEGIN
   nViews:=1;
  END;
 END;
-Frame[9]:=
+Frame[6]:=
 BEGIN
- Max:=true;
  Norm:="0078 0078 1077 0512";
  Min:="-001 -001";
  Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.CartesianControl!CartesianControl";
@@ -348,6 +302,51 @@ BEGIN
   View[0]:=
   BEGIN
    Yscroll:=2;
+  END;
+  nViews:=1;
+ END;
+END;
+Frame[7]:=
+BEGIN
+ Norm:="0052 0052 1284 0377";
+ Min:="-001 -001";
+ Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.ManualMode!ManualMode";
+ Type:=1;
+ Views:=
+ BEGIN
+  View[0]:=
+  BEGIN
+  END;
+  nViews:=1;
+ END;
+END;
+Frame[8]:=
+BEGIN
+ Norm:="0026 0026 1258 0351";
+ Min:="-001 -001";
+ Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.AutoMode!AutoMode";
+ Type:=1;
+ Views:=
+ BEGIN
+  View[0]:=
+  BEGIN
+   Yscroll:=34;
+  END;
+  nViews:=1;
+ END;
+END;
+Frame[9]:=
+BEGIN
+ Max:=true;
+ Norm:="0104 0104 1246 0429";
+ Min:="-001 -001";
+ Access:="PROGRAM:NewProject.Resources.NewResource1.Programs.Auto_Fura.Sections.EthernetInterface!EthernetInterface";
+ Type:=1;
+ Views:=
+ BEGIN
+  View[0]:=
+  BEGIN
+   Yscroll:=7;
   END;
   nViews:=1;
  END;
