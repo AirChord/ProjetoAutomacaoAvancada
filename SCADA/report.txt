@@ -1,0 +1,18 @@
+//////////////////////////////////////////////////
+///		PCB Driller REPORT	        //		
+/////////////////////////////////////////////////
+
+DATE: 15/02/2020
+TIME: 12:48:25
+
+
+Counter1: 1278
+Counter2: 2
+Counter3: 3
+Counter4: 4
+Counter5: 5
+Counter6: 6
+Counter7: 7
+Counter8: 8
+Counter9: 9
+Counter10: 10
