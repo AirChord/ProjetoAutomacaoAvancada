@@ -1,0 +1,18 @@
+//////////////////////////////////////////////////
+///		PCB Driller REPORT	        //		
+/////////////////////////////////////////////////
+
+(("DATE: %s", $Date ))
+(("TIME: %s", $Time ))
+
+
+(("Counter1: %d", Counter1 ))
+(("Counter2: %d", Counter2 ))
+(("Counter3: %d", Counter3 ))
+(("Counter4: %d", Counter4 ))
+(("Counter5: %d", Counter5 ))
+(("Counter6: %d", Counter6 ))
+(("Counter7: %d", Counter7 ))
+(("Counter8: %d", Counter8 ))
+(("Counter9: %d", Counter9 ))
+(("Counter10: %d", Counter10 ))
