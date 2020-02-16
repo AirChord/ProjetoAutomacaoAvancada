@@ -177,106 +177,115 @@ ProjectTree:=
 BEGIN
  Item[0]:=0;
  Item[1]:=2;
- Item[2]:=23;
- Item[3]:=24;
- Item[4]:=38;
+ Item[2]:=25;
+ Item[3]:=26;
+ Item[4]:=40;
  ItemCount:=5;
- Sumcheck:=76;
- Selected:=33;
+ Sumcheck:=84;
+ Selected:=31;
 END;
 Frame[0]:=
 BEGIN
- Norm:="0026 0026 1458 0463";
+ Norm:="0130 0130 1562 0567";
  Min:="-001 -001";
- Access:="PROGRAM:NewProject.Resources.FB source program.Programs.Auto_Fura.Sections.Output!Output";
+ Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Programs.Auto_Fura.Sections.CartesianControl!CartesianControl";
  Type:=1;
  Views:=
  BEGIN
   View[0]:=
   BEGIN
-   Yscroll:=24;
   END;
   nViews:=1;
  END;
 END;
 Frame[1]:=
 BEGIN
- Norm:="0104 0104 1536 0541";
+ Norm:="0130 0130 1458 0702";
  Min:="-001 -001";
- Access:="PROGRAM:NewProject.Resources.FB source program.Programs.Auto_Fura.Sections.EthernetInterface!EthernetInterface";
+ Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Programs.Auto_Fura.Sections.ManualMode!ManualMode";
  Type:=1;
  Views:=
  BEGIN
   View[0]:=
   BEGIN
-   Yscroll:=8;
   END;
   nViews:=1;
  END;
 END;
 Frame[2]:=
 BEGIN
- Norm:="0052 0052 1484 0489";
+ Norm:="0156 0156 1484 0728";
  Min:="-001 -001";
- Access:="PROGRAM:NewProject.Resources.FB source program.Programs.Auto_Fura.Sections.Iniciation!Iniciation";
+ Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Programs.Auto_Fura.Sections.AutoMode!AutoMode";
  Type:=1;
  Views:=
  BEGIN
   View[0]:=
   BEGIN
-   Yscroll:=2;
   END;
   nViews:=1;
  END;
 END;
 Frame[3]:=
 BEGIN
- Norm:="0156 0156 1484 0728";
+ Norm:="0000 0000 1432 0437";
  Min:="-001 -001";
- Access:="PROGRAM:NewProject.Resources.FB source program.Programs.Auto_Fura.Sections.AutoMode!AutoMode";
+ Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Programs.Auto_Fura.Sections.Output!Output";
  Type:=1;
  Views:=
  BEGIN
   View[0]:=
   BEGIN
-   Yscroll:=66;
+   Yscroll:=13;
   END;
   nViews:=1;
  END;
 END;
 Frame[4]:=
 BEGIN
- Norm:="0156 0156 1588 0593";
+ Norm:="0052 0052 1484 0489";
  Min:="-001 -001";
- Access:="PROGRAM:NewProject.Resources.FB source program.Programs.Auto_Fura.Sections.SerialCam!SerialCam";
- Type:=1;
+ Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Function Blocks.ManualPointers!ManualPointers";
+ Type:=9;
+ Ysplit:=132;
  Views:=
  BEGIN
   View[0]:=
   BEGIN
+   Mag:=1;
   END;
-  nViews:=1;
+  View[1]:=
+  BEGIN
+   Mag:=1;
+  END;
+  nViews:=2;
  END;
 END;
 Frame[5]:=
 BEGIN
- Norm:="0026 0026 1376 0620";
+ Norm:="0078 0078 1510 0515";
  Min:="-001 -001";
- Access:="PROGRAM:NewProject.Resources.FB source program.Programs.Auto_Fura.Sections.CartesianControl!CartesianControl";
- Type:=1;
+ Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Function Blocks.MemorySelectCam!MemorySelectCam";
+ Type:=9;
+ Ysplit:=132;
  Views:=
  BEGIN
   View[0]:=
   BEGIN
+   Mag:=1;
   END;
-  nViews:=1;
+  View[1]:=
+  BEGIN
+   Mag:=1;
+  END;
+  nViews:=2;
  END;
 END;
 Frame[6]:=
 BEGIN
- Norm:="0000 0000 1432 0437";
+ Norm:="0104 0104 1536 0541";
  Min:="-001 -001";
- Access:="PROGRAM:NewProject.Resources.FB source program.Function Blocks.MemorySelectCam!MemorySelectCam";
+ Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Function Blocks.ManualPointerEndT!ManualPointerEndT";
  Type:=9;
  Ysplit:=132;
  Views:=
@@ -294,36 +303,16 @@ BEGIN
 END;
 Frame[7]:=
 BEGIN
- Norm:="0182 0182 1614 0619";
- Min:="-001 -001";
- Access:="PROGRAM:NewProject.Resources.FB source program.Function Blocks.ManualPointers!ManualPointers";
- Type:=9;
- Ysplit:=132;
- Views:=
- BEGIN
-  View[0]:=
-  BEGIN
-   Mag:=1;
-  END;
-  View[1]:=
-  BEGIN
-   Mag:=1;
-  END;
-  nViews:=2;
- END;
-END;
-Frame[8]:=
-BEGIN
- Norm:="0130 0130 1562 0567";
+ Norm:="0052 0052 1484 0489";
  Min:="-001 -001";
  Path:="C:\Users\jomrodrigues\Documents\GitHub\ProjetoAutomacaoAvancada\cxProgrammer\ProjAutoAvancada.cxp";
- Access:="PROJECT:!NewProject.Resources.FB source program.Symbols";
+ Access:="PROJECT:!AutomacaoAvancada.Resources.FB source program.Symbols";
  Type:=3;
  Views:=
  BEGIN
   View[0]:=
   BEGIN
-   Yscroll:=96;
+   Yscroll:=9;
    Mag:=1;
    Extra:=
    BEGIN
@@ -337,8 +326,22 @@ BEGIN
     Width[4]:=84;
     Width[5]:=48;
     Width[6]:=200;
-    SortAscending:=false;
    END;
+  END;
+  nViews:=1;
+ END;
+END;
+Frame[8]:=
+BEGIN
+ Norm:="0052 0052 1484 0489";
+ Min:="-001 -001";
+ Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Programs.Auto_Fura.Sections.HWInput_Output!HWInput_Output";
+ Type:=1;
+ Views:=
+ BEGIN
+  View[0]:=
+  BEGIN
+   Yscroll:=16;
   END;
   nViews:=1;
  END;
@@ -346,9 +349,9 @@ END;
 Frame[9]:=
 BEGIN
  Max:=true;
- Norm:="0130 0130 1458 0702";
+ Norm:="0078 0078 1510 0515";
  Min:="-001 -001";
- Access:="PROGRAM:NewProject.Resources.FB source program.Programs.Auto_Fura.Sections.ManualMode!ManualMode";
+ Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Programs.Auto_Fura.Sections.Main!Main";
  Type:=1;
  Views:=
  BEGIN
@@ -371,13 +374,13 @@ BEGIN
   ColumnWidth[3]:=116;
   ColumnWidth[4]:=60;
   ColumnWidth[5]:=194;
-  NumWatches:=6;
+  NumWatches:=8;
   Watch[0]:=
   BEGIN
    PLC:="NewPLC1";
    Reference:="D97";
    TypeKnown:=true;
-   Path:="PROJECT:!NewProject.Resources.FB source program.Symbols";
+   Path:="PROJECT:!AutomacaoAvancada.Resources.FB source program.Symbols";
    Type:=4;
   END;
   Watch[1]:=
@@ -385,7 +388,7 @@ BEGIN
    PLC:="NewPLC1";
    Reference:="N_Drills";
    TypeKnown:=true;
-   Path:="PROJECT:!NewProject.Resources.FB source program.Symbols";
+   Path:="PROJECT:!AutomacaoAvancada.Resources.FB source program.Symbols";
    Type:=200;
   END;
   Watch[2]:=
@@ -393,7 +396,7 @@ BEGIN
    PLC:="NewPLC1";
    Reference:="D100";
    TypeKnown:=true;
-   Path:="PROJECT:!NewProject.Resources.FB source program.Symbols";
+   Path:="PROJECT:!AutomacaoAvancada.Resources.FB source program.Symbols";
    Type:=200;
   END;
   Watch[3]:=
@@ -401,7 +404,7 @@ BEGIN
    PLC:="NewPLC1";
    Reference:="D101";
    TypeKnown:=true;
-   Path:="PROJECT:!NewProject.Resources.FB source program.Symbols";
+   Path:="PROJECT:!AutomacaoAvancada.Resources.FB source program.Symbols";
    Type:=200;
   END;
   Watch[4]:=
@@ -409,10 +412,26 @@ BEGIN
    PLC:="NewPLC1";
    Reference:="D112";
    TypeKnown:=true;
-   Path:="PROJECT:!NewProject.Resources.FB source program.Symbols";
+   Path:="PROJECT:!AutomacaoAvancada.Resources.FB source program.Symbols";
    Type:=200;
   END;
   Watch[5]:=
+  BEGIN
+   PLC:="NewPLC1";
+   Reference:="manual_X_Pointer";
+   TypeKnown:=true;
+   Path:="PROJECT:!AutomacaoAvancada.Resources.FB source program.Symbols";
+   Type:=200;
+  END;
+  Watch[6]:=
+  BEGIN
+   PLC:="NewPLC1";
+   Reference:="manual_Y_Pointer";
+   TypeKnown:=true;
+   Path:="PROJECT:!AutomacaoAvancada.Resources.FB source program.Symbols";
+   Type:=200;
+  END;
+  Watch[7]:=
   BEGIN
   END;
  END;
