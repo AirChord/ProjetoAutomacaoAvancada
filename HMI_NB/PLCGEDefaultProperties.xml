@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<DefaultGEProperties/>
+<DefaultGEProperties><OneGEProPerties ObjType="3" PartType="0"><PLCProperties Pripority="" Description=""><InPutData Pripority="1" AddrType="254" AddrTypeName="LB" CodeType="0" WordNum="1" PLCAddr="0" MaskValType="0" bUseAddrTag="0" PLCID="2"/><OutPutData Pripority="1" AddrType="60" AddrTypeName="D_bit" CodeType="0" WordNum="1" PLCAddr="20.07" MaskValType="0" bUseAddrTag="0" PLCID="2"/></PLCProperties><ShapeProperties bUseVG="0" VGName="" BUseBG="0" BGName=""/></OneGEProPerties></DefaultGEProperties>
