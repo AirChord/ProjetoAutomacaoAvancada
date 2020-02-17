@@ -290,7 +290,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
       </rect>
      </property>
      <property name="maximum">
-      <number>1000</number>
+      <number>100</number>
      </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -306,7 +306,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
       </rect>
      </property>
      <property name="maximum">
-      <number>1000</number>
+      <number>100</number>
      </property>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -351,6 +351,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
        <width>51</width>
        <height>33</height>
       </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
      </property>
      <property name="autoDefault">
       <bool>true</bool>
@@ -745,6 +748,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
        <height>33</height>
       </size>
      </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
      <property name="autoDefault">
       <bool>true</bool>
      </property>
@@ -895,7 +901,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_5">
+    <widget class="QLabel" name="lb_inp0">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -952,7 +958,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_7">
+    <widget class="QLabel" name="lb_inp1">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1009,7 +1015,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_9">
+    <widget class="QLabel" name="lb_inp2">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1066,7 +1072,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_11">
+    <widget class="QLabel" name="lb_inp3">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1123,7 +1129,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_23">
+    <widget class="QLabel" name="lb_inp5">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1180,7 +1186,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_25">
+    <widget class="QLabel" name="lb_inp6">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1237,7 +1243,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_27">
+    <widget class="QLabel" name="lb_inp4">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1294,7 +1300,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_29">
+    <widget class="QLabel" name="lb_inp7">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1351,7 +1357,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_31">
+    <widget class="QLabel" name="lb_inp8">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1408,7 +1414,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_17">
+    <widget class="QLabel" name="lb_out1">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1465,7 +1471,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_33">
+    <widget class="QLabel" name="lb_out5">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1522,7 +1528,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_35">
+    <widget class="QLabel" name="lb_out6">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1579,7 +1585,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_37">
+    <widget class="QLabel" name="lb_out2">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1636,7 +1642,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_39">
+    <widget class="QLabel" name="lb_out0">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1693,7 +1699,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_41">
+    <widget class="QLabel" name="lb_out4">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -1750,7 +1756,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_43">
+    <widget class="QLabel" name="lb_out3">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -2604,7 +2610,7 @@ color: rgb(255, 255, 255);</string>
     </property>
    </widget>
   </widget>
-  <widget class="QFrame" name="frame_4">
+  <widget class="QFrame" name="warningFrame">
    <property name="geometry">
     <rect>
      <x>1280</x>
@@ -2711,7 +2717,7 @@ color: rgb(255, 255, 255);</string>
   <zorder>label_4</zorder>
   <zorder>frameInOut</zorder>
   <zorder>frameCounter</zorder>
-  <zorder>frame_4</zorder>
+  <zorder>warningFrame</zorder>
  </widget>
  <resources/>
  <connections/>

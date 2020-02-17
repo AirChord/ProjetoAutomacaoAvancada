@@ -175,13 +175,6 @@ class com:
             return -1
 
 
-
-def test():
-    global com1
-    com1.readMessage(100)
-    com1.received()
-
-
 '''GUI class'''
 class AppWindow(QDialog):
     def __init__(self):
@@ -195,7 +188,12 @@ class AppWindow(QDialog):
         self.ui.buttonData.clicked.connect(self.toggleDataFrame)
         self.ui.buttonManual.clicked.connect(self.toggleManual)
         self.ui.buttonTeach.clicked.connect(self.teachButtonClicked)
-        self.ui.buttonNextDrill.clicked.connect(self.NextDrillButtonClicked)
+        self.ui.buttonNextDrill.clicked.connect(self.nextDrillButtonClicked)
+        self.ui.buttonZ.clicked.connect(self.buttonZClicked)
+        self.ui.buttonStep.clicked.connect(self.stepButtonClick)
+        self.ui.buttonCartesianEnable.clicked.connect(self.cartEnableButtonClick)
+        self.ui.slider_X.valueChanged.connect(self.sliderXChanged)
+        self.ui.slider_Y.valueChanged.connect(self.sliderYChanged)
 
     def initState(self):
         self.ui.frameInOut.setVisible (False)
@@ -209,6 +207,50 @@ class AppWindow(QDialog):
         self.ui.buttonNextDrill.setVisible (False)
         self.ui.buttonEndTeach.setVisible (False)
         self.ui.buttonCartesianEnable.setVisible (False)
+        self.ui.warningFrame.setVisible (False)
+
+    def teachButtonClicked(self):
+
+        #print("teach button CLick")
+        com1.writeBit(23, 1, True)
+        com1.writeBit(23, 1, False)
+
+    def nextDrillButtonClicked(self):
+        com1.readOneMemory(96)
+        numberDrill = com1.receivedOneMemory()
+        numberDrill+=1
+        self.ui.lb_program.setText(str(numberDrill))
+        com1.writeMessage(96, numberDrill)
+
+
+    def endTeachButton(self):
+        # print("end teach button CLick")
+        com1.writeBit(23, 2, True)
+        com1.writeBit(23, 2, False)
+
+    def buttonZClicked(self):
+        if (self.ui.buttonZ.isChecked()):
+            #print("Zon")
+            com1.writeBit(22, 4, True)
+        else:
+            #print("Zoff")
+            com1.writeBit(22, 4, False)
+
+    def buttonDrillClicked(self):
+        if (self.ui.buttonZ.isChecked()):
+            #print("Zon")
+            com1.writeBit(22, 5, True)
+        else:
+            #print("Zoff")
+            com1.writeBit(22, 5, False)
+
+    def sliderXChanged(self):
+        #com1.writeMessage(10, int(self.ui.slider_X.value()))
+        print(int(self.ui.slider_X.value()))
+
+    def sliderYChanged(self):
+        #com1.writeMessage(11, int(self.ui.slider_Y.value()))
+        print(int(self.ui.slider_Y.value()))
 
     def toggleManual(self):
         if self.ui.buttonManual.text() == "Manual":
@@ -234,38 +276,6 @@ class AppWindow(QDialog):
             self.ui.buttonCartesianEnable.setVisible (False)
             self.ui.buttonManual.setText ("Manual")
 
-    def teachButtonClicked(self):
-        self.ui.lb_X.setText("we")
-        #com1.readOneMemory(100)
-        #com1.receivedOneMemory()
-
-        #self.ui.lb_X.setText (data)
-        #com1.writeMessage(51, 1279)
-        com1.writeBit(51, 0, False)
-
-    def NextDrillButtonClicked(self):
-        print("NewCLick")
-        com1.writeBit(51, 0, True)
-        #com1.writeMessage(51, 1278)
-
-    def toggleManual1(self):
-        self.ui.slider_Y.setVisible (True)  
-        if self.ui.slider_X.isVisible():
-        #if self.ui.buttonManual.text == "Manual":
-            self.ui.slider_X.setVisible (True)
-            self.ui.slider_Y.setVisible (True)
-            self.ui.buttonStep.setVisible (True)
-            self.ui.buttonZ.setVisible (True)
-            self.ui.buttonDrill.setVisible (True)
-            self.ui.buttonManual.setText ("Auto")
-        else:
-            self.ui.buttonManual.setText ("Manual")
-            self.ui.slider_X.setVisible (False)
-            self.ui.slider_Y.setVisible (False)
-            self.ui.buttonStep.setVisible (False)
-            self.ui.buttonZ.setVisible (False)
-            self.ui.buttonDrill.setVisible (False)
-
     def toggleInOutFrame(self):
         if self.ui.frameInOut.isVisible():
             self.ui.frameInOut.setVisible (False)
@@ -278,13 +288,26 @@ class AppWindow(QDialog):
         else:
             self.ui.frameCounter.setVisible (True)
 
+    def stepButtonClick(self):
+        com1.writeBit(22, 7, True)
+        com1.writeBit(22, 7, False)
+
+    def cartEnableButtonClick(self):
+        if (self.ui.buttonCartesianEnable.isChecked()):
+            #print("Cartisian enable click")
+            com1.writeBit(22, 6, True)
+            self.ui.buttonCartesianEnable.setText("Cartesian Disable")
+        else:
+            #print("Cartiesian disable click")
+             com1.writeBit(22, 6, False)
+             self.ui.buttonCartesianEnable.setText("Cartesian Enable")
+
     def updateDateTime(self):
         now = datetime.now()
         date = now.strftime("%d of %B, %Y")
         currentTime = now.strftime("%H:%M:%S")
         self.ui.lb_Date.setText(date)
         self.ui.lb_time.setText(currentTime)
-
 
     def updateState(self):
         '''Read State from PLC'''
@@ -307,13 +330,43 @@ class AppWindow(QDialog):
 
     def updatePositions(self):
         com1.readTwoMemory(10)
-        position = com1.receivedTwoMemory()
-        self.ui.lb_X.setText(str(position[0]))
-        self.ui.lb_Y.setText(str(position[1]))
+        nextPosition = com1.receivedTwoMemory()
+
         '''Adjust coordinates to image'''
-        px=position[0]*310/1000
-        py=position[1]*310/1000
+
+        px=nextPosition[0]*310/100
+        py=nextPosition[1]*310/100
         self.ui.main_cross.move(px+40,py+80)
+        com1.readTwoMemory(14)
+        actualPosition = com1.receivedTwoMemory()
+        apx = actualPosition[0] * 310 / 100
+        apy = actualPosition[1] * 310 / 100
+        self.ui.main_circle.move(apx + 40, apy + 80)
+
+        if self.ui.buttonManual.text() == "Manual":
+            self.ui.lb_X.setText(str(actualPosition[0]))
+            self.ui.lb_Y.setText(str(actualPosition[1]))
+        elif self.ui.buttonManual.text() == "Auto":
+            self.ui.lb_X.setText(str(nextPosition[0]))
+            self.ui.lb_Y.setText(str(nextPosition[1]))
+
+
+
+        '''update cilinder z state'''
+
+
+        com1.readOneMemory(25)
+        zState = com1.receivedOneMemory()
+
+        if zState == 0 :
+            pixmap = QPixmap('Images\circle_lGreen.png')
+            self.ui.main_circle.setPixmap(pixmap)
+        if zState == 1 :
+            pixmap = QPixmap('Images\circle_Yellow.png')
+            self.ui.main_circle.setPixmap(pixmap)
+        if zState == 2 :
+            pixmap = QPixmap('Images\circle_Red.png')
+            self.ui.main_circle.setPixmap(pixmap)
 
     def updateCounters(self):
         com1.readCounterMemory(51)
@@ -329,13 +382,55 @@ class AppWindow(QDialog):
         self.ui.lb_Counter9.setText(str(counters[8]))
         self.ui.lb_Counter10.setText(str(counters[9]))
 
+    def updateInOut(self):
+        com1.readTwoMemory(10)
+        inOutData = com1.receivedTwoMemory()
+
+
+        '''Update Inputs'''
+        for i in range(9):
+            aux=1
+
+            bit =  inOutData[0] & (aux<<i)
+            label = "lb_inp" + str(i)
+            print(label)
+            if bit > 0:
+                pixmap = QPixmap('Images\circle_lGreen.png')
+                getattr(self.ui,label).setPixmap(pixmap)
+            else:
+                pixmap = QPixmap('Images\circle_dGreen.png')
+                getattr(self.ui, label).setPixmap(pixmap)
+
+        '''Update Outputs'''
+        for i in range(7):
+            aux=1
+
+            bit =  inOutData[1] & (aux<<i)
+            label = "lb_out" + str(i)
+            print(label)
+            if bit > 0:
+                pixmap = QPixmap('Images\circle_lGreen.png')
+                getattr(self.ui,label).setPixmap(pixmap)
+            else:
+                pixmap = QPixmap('Images\circle_dGreen.png')
+                getattr(self.ui, label).setPixmap(pixmap)
+
+    def updateWarning(self):
+        com1.readOneMemory(10)
+        warning = com1.receivedOneMemory()
+
+
+
+
+
 
 """Thread definition"""
 def updateQt(i,w):
     w.updateDateTime()
-    #w.updateState()
-    #w.updatePositions()
-    #w.updateCounters()
+    # w.updateState()
+    # w.updatePositions()
+    # w.updateCounters()
+    # w.updateInOut()
 
 
 
