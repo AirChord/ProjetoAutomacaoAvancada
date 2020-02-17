@@ -220,7 +220,6 @@ class AppWindow(QDialog):
         com1.readOneMemory(96)
         numberDrill = com1.receivedOneMemory()
         numberDrill+=1
-        self.ui.lb_program.setText(str(numberDrill))
         com1.writeMessage(96, numberDrill)
 
 
@@ -328,7 +327,7 @@ class AppWindow(QDialog):
         self.ui.lb_state.setText (switcher.get(numberState, "Invalid"))
 
     def updateProgram(self):
-        com1.readOneMemory()
+        com1.readOneMemory(16)
         numberProgram = com1.receivedOneMemory()
         self.ui.lb_program.setText (str(numberProgram))
 
@@ -428,35 +427,29 @@ class AppWindow(QDialog):
             self.ui.warningFrame.setVisible(True)
 
 
-
+    def updateDrillNumber(self):
+        com1.readOneMemory(96)
+        numberDrill = com1.receivedOneMemory()
+        self.ui.lb_drillNumber.setText(str(numberDrill))
 
 
 
 """Thread definition"""
 def updateQt(i,w):
     w.updateDateTime()
-    # w.updateState()
-    # w.updatePositions()
-    # w.updateCounters()
-    # w.updateInOut()
+    w.updateProgram()
+    w.updateState()
+    w.updatePositions()
+    w.updateCounters()
+    w.updateInOut()
+    w.updateDrillNumber()
 
     w.updateWarning()
-
-
-
 
     global t
     t = threading.Timer(1.0, updateQt, args=(i,w,))
     t.start()
 
-
-
-
-def testThread():
-    print("hello. Timer")
-    global t
-    t = threading.Timer(1.0, testThread)
-    t.start()
 
 def loop_a():
     app = QApplication(sys.argv)
