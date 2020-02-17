@@ -2679,7 +2679,7 @@ color: rgb(255, 255, 255);</string>
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Machine Stopped&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="buttonWarningClose_3">
+   <widget class="QPushButton" name="buttonWarningClose">
     <property name="geometry">
      <rect>
       <x>380</x>

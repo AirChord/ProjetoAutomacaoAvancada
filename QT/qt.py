@@ -194,6 +194,7 @@ class AppWindow(QDialog):
         self.ui.buttonCartesianEnable.clicked.connect(self.cartEnableButtonClick)
         self.ui.slider_X.valueChanged.connect(self.sliderXChanged)
         self.ui.slider_Y.valueChanged.connect(self.sliderYChanged)
+        self.ui.buttonWarningClose.clicked.connect(self.warningButtonClick)
 
     def initState(self):
         self.ui.frameInOut.setVisible (False)
@@ -245,12 +246,12 @@ class AppWindow(QDialog):
             com1.writeBit(22, 5, False)
 
     def sliderXChanged(self):
-        #com1.writeMessage(10, int(self.ui.slider_X.value()))
-        print(int(self.ui.slider_X.value()))
+        com1.writeMessage(10, int(self.ui.slider_X.value()))
+        #print(int(self.ui.slider_X.value()))
 
     def sliderYChanged(self):
-        #com1.writeMessage(11, int(self.ui.slider_Y.value()))
-        print(int(self.ui.slider_Y.value()))
+        com1.writeMessage(11, int(self.ui.slider_Y.value()))
+        #print(int(self.ui.slider_Y.value()))
 
     def toggleManual(self):
         if self.ui.buttonManual.text() == "Manual":
@@ -301,6 +302,9 @@ class AppWindow(QDialog):
             #print("Cartiesian disable click")
              com1.writeBit(22, 6, False)
              self.ui.buttonCartesianEnable.setText("Cartesian Enable")
+
+    def warningButtonClick(self):
+        self.ui.warningFrame.setVisible(False)
 
     def updateDateTime(self):
         now = datetime.now()
@@ -416,8 +420,12 @@ class AppWindow(QDialog):
                 getattr(self.ui, label).setPixmap(pixmap)
 
     def updateWarning(self):
-        com1.readOneMemory(10)
+        com1.readOneMemory(20)
         warning = com1.receivedOneMemory()
+        aux=1
+        bit = warning & (aux << 9)
+        if bit >0:
+            self.ui.warningFrame.setVisible(True)
 
 
 
@@ -431,6 +439,8 @@ def updateQt(i,w):
     # w.updatePositions()
     # w.updateCounters()
     # w.updateInOut()
+
+    w.updateWarning()
 
 
 
