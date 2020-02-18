@@ -186,7 +186,7 @@ class AppWindow(QDialog):
         self.showMaximized()
         self.ui.buttonInOut.clicked.connect(self.toggleInOutFrame)
         self.ui.buttonData.clicked.connect(self.toggleDataFrame)
-        self.ui.buttonManual.clicked.connect(self.toggleManual)
+        self.ui.buttonManual.clicked.connect(self.openLoginPage)
         self.ui.buttonTeach.clicked.connect(self.teachButtonClicked)
         self.ui.buttonNextDrill.clicked.connect(self.nextDrillButtonClicked)
         self.ui.buttonZ.clicked.connect(self.buttonZClicked)
@@ -195,6 +195,7 @@ class AppWindow(QDialog):
         self.ui.slider_X.valueChanged.connect(self.sliderXChanged)
         self.ui.slider_Y.valueChanged.connect(self.sliderYChanged)
         self.ui.buttonWarningClose.clicked.connect(self.warningButtonClick)
+        self.ui.buttonLogin.clicked.connect(self.checkLogin)
 
     def initState(self):
         self.ui.frameInOut.setVisible (False)
@@ -209,6 +210,28 @@ class AppWindow(QDialog):
         self.ui.buttonEndTeach.setVisible (False)
         self.ui.buttonCartesianEnable.setVisible (False)
         self.ui.warningFrame.setVisible (False)
+        self.ui.loginFrame.setVisible (False)
+
+    def openLoginPage(self):
+        self.ui.label_5.setText("Insert PIN:")
+        if self.ui.buttonManual.isChecked():
+            if self.ui.buttonManual.text() == "Manual":
+                self.ui.loginFrame.setVisible(True)
+            else:
+                print("ENDMODE")
+                com1.writeBit(20,7,True)
+
+        else:
+            self.ui.loginFrame.setVisible(False)
+
+    def checkLogin(self):
+        if self.ui.lineEdit.text() == "1111":
+            com1.writeBit(20,12,True)
+            self.ui.loginFrame.setVisible(False)
+            self.ui.buttonManual.toggle()
+        else:
+            self.ui.label_5.setText ("Try again")
+
 
     def teachButtonClicked(self):
 
@@ -252,8 +275,9 @@ class AppWindow(QDialog):
         com1.writeMessage(11, int(self.ui.slider_Y.value()))
         #print(int(self.ui.slider_Y.value()))
 
-    def toggleManual(self):
-        if self.ui.buttonManual.text() == "Manual":
+    def toggleManual(self, value):
+        if value == True:
+        #if self.ui.buttonManual.text() == "Manual":
             self.ui.slider_X.setVisible(True)
             self.ui.slider_Y.setVisible (True)
             self.ui.buttonStep.setVisible (True)
@@ -433,18 +457,33 @@ class AppWindow(QDialog):
         self.ui.lb_drillNumber.setText(str(numberDrill))
 
 
+    def updateManualPage(self):
+        com1.readOneMemory(20)
+        auxData = com1.receivedOneMemory()
+        # auxData = 32768
+        # auxData = 0
+        aux=1
+        aux = aux << 15
+        if (aux & auxData) > 0:
+            self.toggleManual(1)
+        else:
+            self.toggleManual(0)
+
+
 
 """Thread definition"""
 def updateQt(i,w):
-    w.updateDateTime()
-    w.updateProgram()
-    w.updateState()
-    w.updatePositions()
-    w.updateCounters()
-    w.updateInOut()
-    w.updateDrillNumber()
+    # w.updateDateTime()
+    # w.updateProgram()
+    # w.updateState()
+    # w.updatePositions()
+    # w.updateCounters()
+    # w.updateInOut()
+    # w.updateDrillNumber()
+    #
+    # w.updateWarning()
 
-    w.updateWarning()
+    # w.updateManualPage()
 
     global t
     t = threading.Timer(1.0, updateQt, args=(i,w,))
