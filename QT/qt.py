@@ -196,6 +196,10 @@ class AppWindow(QDialog):
         self.ui.slider_Y.valueChanged.connect(self.sliderYChanged)
         self.ui.buttonWarningClose.clicked.connect(self.warningButtonClick)
         self.ui.buttonLogin.clicked.connect(self.checkLogin)
+        self.ui.buttonReport.clicked.connect(self.writeReport)
+        self.ui.buttonCounterClose.clicked.connect(self.counterCloseClick)
+        self.ui.buttonInOutClose.clicked.connect(self.InOutCloseClick)
+
 
     def initState(self):
         self.ui.frameInOut.setVisible (False)
@@ -328,6 +332,12 @@ class AppWindow(QDialog):
 
     def warningButtonClick(self):
         self.ui.warningFrame.setVisible(False)
+
+    def counterCloseClick(self):
+
+        self.ui.frameCounter.setVisible(False)
+    def InOutCloseClick(self):
+        self.ui.frameInOut.setVisible(False)
 
     def updateDateTime(self):
         now = datetime.now()
@@ -469,21 +479,40 @@ class AppWindow(QDialog):
         else:
             self.toggleManual(0)
 
+    def writeReport(self):
+        with open('report.txt','w') as f:
+
+            my_text="////////////////////////////////////////////////////////////////////\n" \
+                    "//                     Report                                    //\n" \
+                    "///////////////////////////////////////////////////////////////////\n" \
+                    "\n" \
+                    "\n" \
+                    "\n" \
+                    "Counter       |   Quantity\n" \
+                    "\n"
+
+            for i in range(1, 11):
+                label = "lb_Counter" + str(i)
+                my_text = my_text + label + "   |   " + getattr(self.ui, label).text() + "\n"
+                print(my_text)
+            f.write(my_text)
+            f.close()
+
 
 
 """Thread definition"""
 def updateQt(i,w):
-    # w.updateDateTime()
-    # w.updateProgram()
-    # w.updateState()
-    # w.updatePositions()
-    # w.updateCounters()
-    # w.updateInOut()
-    # w.updateDrillNumber()
-    #
-    # w.updateWarning()
+    w.updateDateTime()
+    w.updateProgram()
+    w.updateState()
+    w.updatePositions()
+    w.updateCounters()
+    w.updateInOut()
+    w.updateDrillNumber()
 
-    # w.updateManualPage()
+    w.updateWarning()
+
+    w.updateManualPage()
 
     global t
     t = threading.Timer(1.0, updateQt, args=(i,w,))

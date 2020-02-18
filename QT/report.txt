@@ -1,0 +1,18 @@
+////////////////////////////////////////////////////////////////////
+//                     Report                                    //
+///////////////////////////////////////////////////////////////////
+
+
+
+Counter      |   Quantity
+
+lb_Counter1   |   0
+lb_Counter2   |   0
+lb_Counter3   |   0
+lb_Counter4   |   0
+lb_Counter5   |   0
+lb_Counter6   |   0
+lb_Counter7   |   0
+lb_Counter8   |   0
+lb_Counter9   |   0
+lb_Counter10   |   0
