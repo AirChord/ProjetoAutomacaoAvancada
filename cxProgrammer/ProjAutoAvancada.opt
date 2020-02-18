@@ -181,7 +181,7 @@ BEGIN
  Item[3]:=26;
  ItemCount:=4;
  Sumcheck:=84;
- Selected:=34;
+ Selected:=36;
 END;
 Frame[0]:=
 BEGIN
@@ -230,6 +230,79 @@ Frame[2]:=
 BEGIN
  Norm:="0052 0052 1484 0489";
  Min:="-001 -001";
+ Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Programs.Auto_Fura.Sections.HWInput_Output!HWInput_Output";
+ Type:=1;
+ Views:=
+ BEGIN
+  View[0]:=
+  BEGIN
+  END;
+  nViews:=1;
+ END;
+END;
+Frame[3]:=
+BEGIN
+ Norm:="0026 0026 1474 0489";
+ Min:="-001 -001";
+ Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Programs.Auto_Fura.Sections.Iniciation!Iniciation";
+ Type:=1;
+ Views:=
+ BEGIN
+  View[0]:=
+  BEGIN
+   Yscroll:=8;
+  END;
+  nViews:=1;
+ END;
+END;
+Frame[4]:=
+BEGIN
+ Norm:="0078 0078 1510 0515";
+ Min:="-001 -001";
+ Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Programs.Auto_Fura.Sections.Main!Main";
+ Type:=1;
+ Views:=
+ BEGIN
+  View[0]:=
+  BEGIN
+   Yscroll:=56;
+  END;
+  nViews:=1;
+ END;
+END;
+Frame[5]:=
+BEGIN
+ Norm:="0078 0078 1510 0515";
+ Min:="-001 -001";
+ Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Programs.Auto_Fura.Sections.CartesianControl!CartesianControl";
+ Type:=1;
+ Views:=
+ BEGIN
+  View[0]:=
+  BEGIN
+  END;
+  nViews:=1;
+ END;
+END;
+Frame[6]:=
+BEGIN
+ Norm:="0104 0104 1552 0567";
+ Min:="-001 -001";
+ Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Programs.Auto_Fura.Sections.ManualMode!ManualMode";
+ Type:=1;
+ Views:=
+ BEGIN
+  View[0]:=
+  BEGIN
+   Yscroll:=16;
+  END;
+  nViews:=1;
+ END;
+END;
+Frame[7]:=
+BEGIN
+ Norm:="0052 0052 1484 0489";
+ Min:="-001 -001";
  Path:="C:\Users\jomrodrigues\Documents\GitHub\ProjetoAutomacaoAvancada\cxProgrammer\ProjAutoAvancada.cxp";
  Access:="PROJECT:!AutomacaoAvancada.Resources.FB source program.Symbols";
  Type:=3;
@@ -237,7 +310,6 @@ BEGIN
  BEGIN
   View[0]:=
   BEGIN
-   Yscroll:=106;
    Mag:=1;
    Extra:=
    BEGIN
@@ -257,97 +329,8 @@ BEGIN
   nViews:=1;
  END;
 END;
-Frame[3]:=
-BEGIN
- Norm:="0052 0052 1484 0489";
- Min:="-001 -001";
- Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Programs.Auto_Fura.Sections.HWInput_Output!HWInput_Output";
- Type:=1;
- Views:=
- BEGIN
-  View[0]:=
-  BEGIN
-  END;
-  nViews:=1;
- END;
-END;
-Frame[4]:=
-BEGIN
- Norm:="0026 0026 1474 0489";
- Min:="-001 -001";
- Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Programs.Auto_Fura.Sections.Iniciation!Iniciation";
- Type:=1;
- Views:=
- BEGIN
-  View[0]:=
-  BEGIN
-   Yscroll:=8;
-  END;
-  nViews:=1;
- END;
-END;
-Frame[5]:=
-BEGIN
- Norm:="0078 0078 1510 0515";
- Min:="-001 -001";
- Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Programs.Auto_Fura.Sections.Main!Main";
- Type:=1;
- Views:=
- BEGIN
-  View[0]:=
-  BEGIN
-   Yscroll:=56;
-  END;
-  nViews:=1;
- END;
-END;
-Frame[6]:=
-BEGIN
- Norm:="0000 0000 1432 0437";
- Min:="-001 -001";
- Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Programs.Auto_Fura.Sections.Output!Output";
- Type:=1;
- Views:=
- BEGIN
-  View[0]:=
-  BEGIN
-   Yscroll:=6;
-  END;
-  nViews:=1;
- END;
-END;
-Frame[7]:=
-BEGIN
- Norm:="0078 0078 1510 0515";
- Min:="-001 -001";
- Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Programs.Auto_Fura.Sections.CartesianControl!CartesianControl";
- Type:=1;
- Views:=
- BEGIN
-  View[0]:=
-  BEGIN
-  END;
-  nViews:=1;
- END;
-END;
 Frame[8]:=
 BEGIN
- Norm:="0104 0104 1552 0567";
- Min:="-001 -001";
- Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Programs.Auto_Fura.Sections.ManualMode!ManualMode";
- Type:=1;
- Views:=
- BEGIN
-  View[0]:=
-  BEGIN
-   Yscroll:=16;
-  END;
-  nViews:=1;
- END;
-END;
-Frame[9]:=
-BEGIN
- Max:=true;
  Norm:="0078 0078 1526 0541";
  Min:="-001 -001";
  Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Programs.Auto_Fura.Sections.AutoMode!AutoMode";
@@ -356,7 +339,23 @@ BEGIN
  BEGIN
   View[0]:=
   BEGIN
-   Yscroll:=64;
+   Yscroll:=63;
+  END;
+  nViews:=1;
+ END;
+END;
+Frame[9]:=
+BEGIN
+ Max:=true;
+ Norm:="0000 0000 1432 0437";
+ Min:="-001 -001";
+ Access:="PROGRAM:AutomacaoAvancada.Resources.FB source program.Programs.Auto_Fura.Sections.Output!Output";
+ Type:=1;
+ Views:=
+ BEGIN
+  View[0]:=
+  BEGIN
+   Yscroll:=40;
   END;
   nViews:=1;
  END;

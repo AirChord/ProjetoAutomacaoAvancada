@@ -190,6 +190,7 @@ class AppWindow(QDialog):
         self.ui.buttonTeach.clicked.connect(self.teachButtonClicked)
         self.ui.buttonNextDrill.clicked.connect(self.nextDrillButtonClicked)
         self.ui.buttonZ.clicked.connect(self.buttonZClicked)
+        self.ui.buttonDrill.clicked.connect(self.buttonDrillClicked)
         self.ui.buttonStep.clicked.connect(self.stepButtonClick)
         self.ui.buttonCartesianEnable.clicked.connect(self.cartEnableButtonClick)
         self.ui.slider_X.valueChanged.connect(self.sliderXChanged)
@@ -264,11 +265,11 @@ class AppWindow(QDialog):
             com1.writeBit(22, 4, False)
 
     def buttonDrillClicked(self):
-        if (self.ui.buttonZ.isChecked()):
-            #print("Zon")
+        if (self.ui.buttonDrill .isChecked()):
+            #print("Drillon")
             com1.writeBit(22, 5, True)
         else:
-            #print("Zoff")
+            #print("Drilloff")
             com1.writeBit(22, 5, False)
 
     def sliderXChanged(self):
@@ -467,6 +468,7 @@ class AppWindow(QDialog):
         self.ui.lb_drillNumber.setText(str(numberDrill))
 
 
+
     def updateManualPage(self):
         com1.readOneMemory(20)
         auxData = com1.receivedOneMemory()
@@ -478,6 +480,12 @@ class AppWindow(QDialog):
             self.toggleManual(1)
         else:
             self.toggleManual(0)
+
+
+
+
+
+
 
     def writeReport(self):
         with open('report.txt','w') as f:
